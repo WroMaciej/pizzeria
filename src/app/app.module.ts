@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { BasketComponent } from './basket/basket.component';
 import { ContactComponent } from './contact/contact.component';
+import { CollectingComponent } from './collecting/collecting.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ContactComponent } from './contact/contact.component';
     FooterComponent,
     MenuComponent,
     BasketComponent,
-    ContactComponent
+    ContactComponent,
+    CollectingComponent
   ],
   imports: [
     BrowserModule,
