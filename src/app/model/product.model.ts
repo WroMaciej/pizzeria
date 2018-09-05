@@ -5,7 +5,7 @@ export interface Product {
     name: string;
     description: string;
     isActive: boolean;
-    price: Array<number>;
+    priceOfSize: Array<number>;
     icon: string;
     category: Category;
 }

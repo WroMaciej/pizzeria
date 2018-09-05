@@ -1,4 +1,5 @@
 .menu {
+    
     display: block;
     width:20%;
     height: 500px;
@@ -7,4 +8,20 @@
     background-image: url('../../assets/img/menu-background.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;   
+    font-size: 200%;
+}
+
+.categories {
+    display: block;
+}
+
+.category {
+    display: block;
+    color: white;
+    margin-top: 20%;
+    cursor: pointer;
+}
+
+.category:hover{
+    color:yellowgreen;
 }
