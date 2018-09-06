@@ -35,6 +35,11 @@ export class CollectingComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
+  addToCart(product: Product, event: Event){
+    
+
+  }
+
   private loadProducts() {
     this.service.getProductsByCategory(this.category)
       .subscribe(res => this.products = res);
