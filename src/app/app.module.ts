@@ -11,6 +11,21 @@ import { MenuComponent } from './menu/menu.component';
 import { ContactComponent } from './contact/contact.component';
 import { CollectingComponent } from './collecting/collecting.component';
 import { CartComponent } from './cart/cart.component';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+
+
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'pizza', component: CollectingComponent },
+  { path: 'pasta', component: CollectingComponent },
+  { path: 'drink', component: CollectingComponent },
+
+];
 
 @NgModule({
   declarations: [
@@ -20,12 +35,15 @@ import { CartComponent } from './cart/cart.component';
     MenuComponent,
     ContactComponent,
     CollectingComponent,
-    CartComponent
+    CartComponent,
+    HomeComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

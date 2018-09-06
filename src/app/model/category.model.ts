@@ -1,7 +1,7 @@
 export enum Category {
-	Pizza = 'PIZZA',
-    Pasta = 'PASTA',
-    Drink = 'DRINK'
+	Pizza = 'pizza',
+    Pasta = 'pasta',
+    Drink = 'drink'
 }
 
 export function getMaxSizeOfProduct (category: Category) : number {

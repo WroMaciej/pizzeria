@@ -6,6 +6,6 @@ export interface Product {
     description: string;
     isActive: boolean;
     priceOfSize: Array<number>;
-    icon: string;
     category: Category;
+    icon: string;
 }
