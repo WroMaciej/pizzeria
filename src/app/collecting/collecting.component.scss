@@ -20,56 +20,71 @@
 
 .product.icon {
     display: inline-block;
-    margin-top: auto;
+    margin-left: 5px;
+    margin-top: 5px;
     width: 80px;
     height: 80px;
+    border-style: none;
 
 }
 
 .product.text{
     display: inline-block;
+    margin-left: 15px;
     vertical-align: top;
+    width: 400px;
+    border-style: none;
 }
 
 .product.text.name {
+    margin-left: 0px;
     font-size: 20px;
-    width: 400px;
     height: 30px;
-    background-color: gray;
 }
 
 .product.text.description {
+    margin-left: 0px;
     vertical-align: top;
     border-style: none;
-    width: 400px;
+    height: 50px;
     font-size: 12px;
     color: blue;
-    height: 100%;
+    border-style: none;
+}
 
+.product.buy-text{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 45px;
+    height: auto;
+    border-style: none;
 }
 
 .product.button {
     display: inline-block;
+    align-content: center;
     vertical-align: top;
-    //justify-content: center;
+    margin-top: 5px;
+    margin-left: 10px;
     width: 60px;
-    height: 100%;
-    background-color: yellow;
+    height: 75px;
+    border-style: none;
 }
 
 .product.button.description {
     display: block;
-    //justify-content: center;
-    width: 35px;
+    margin-left: 0px;
+    margin-top: 0px;
     height: 35px;
     background-color: orange;
 }
 
 .product.button.clickable {
     display: block;
-    //justify-content: center;
-    width: 35px;
+    margin-left: 0px;
+    margin-top:0px;
     height: 35px;
+    font-size: 25px;
     background-color: red;
 }
 

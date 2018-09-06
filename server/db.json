@@ -16,7 +16,7 @@
         "description": "Ananasses everywhere!",
         "isActive": true,
         "priceOfSize": [22, 25, 27],
-        "icon": ""
+        "icon": "/assets/img/pizza-default.png"
       },
       {
         "id": 3,
@@ -25,7 +25,7 @@
         "description": "Tasty pasta.",
         "isActive": true,
         "priceOfSize": [14, 16],
-        "icon": ""
+        "icon": "/assets/img/pasta-default.png"
       },
       {
         "id": 4,
@@ -34,7 +34,7 @@
         "description": "Can`t touch this.",
         "isActive": false,
         "priceOfSize": [18, 20, 22],
-        "icon": ""
+        "icon": "/assets/img/pizza-default.png"
       },
       {
         "id": 5,
@@ -61,7 +61,7 @@
         "description": "Fine pasta.",
         "isActive": true,
         "priceOfSize": [17, 27],
-        "icon": ""
+        "icon": "/assets/img/pasta-default.png"
       },
       {
         "id": 8,
@@ -70,7 +70,7 @@
         "description": "Felicita.",
         "isActive": true,
         "priceOfSize": [32, 42, 52],
-        "icon": ""
+        "icon": "/assets/img/pizza-default.png"
       },
       {
         "id": 9,
@@ -79,7 +79,7 @@
         "description": "Good pizza.",
         "isActive": true,
         "priceOfSize": [15, 16, 22],
-        "icon": ""
+        "icon": "/assets/img/pizza-default.png"
       },
       {
         "id": 10,
@@ -88,7 +88,7 @@
         "description": "With banana.",
         "isActive": true,
         "priceOfSize": [13, 14, 24],
-        "icon": ""
+        "icon": "/assets/img/pizza-default.png"
       },
       {
         "id": 11,
@@ -97,7 +97,7 @@
         "description": "From Havana.",
         "isActive": true,
         "priceOfSize": [24, 25, 26],
-        "icon": ""
+        "icon": "/assets/img/pizza-default.png"
       },
       {
         "id": 12,
@@ -106,7 +106,7 @@
         "description": "Siciliano.",
         "isActive": true,
         "priceOfSize": [22, 32, 42],
-        "icon": ""
+        "icon": "/assets/img/pizza-default.png"
       },
       {
         "id": 13,
@@ -115,7 +115,7 @@
         "description": "Vista.",
         "isActive": true,
         "priceOfSize": [13, 16, 18],
-        "icon": ""
+        "icon": "/assets/img/pizza-default.png"
       },
       {
         "id": 14,
@@ -124,7 +124,7 @@
         "description": "For bambinis.",
         "isActive": true,
         "priceOfSize": [8, 9, 10],
-        "icon": ""
+        "icon": "/assets/img/pizza-default.png"
       },
       {
         "id": 15,
@@ -133,7 +133,7 @@
         "description": "Be careful.",
         "isActive": true,
         "priceOfSize": [14, 18, 26],
-        "icon": ""
+        "icon": "/assets/img/pizza-default.png"
       },
       {
         "id": 16,
@@ -142,7 +142,7 @@
         "description": "Hot pizza.",
         "isActive": true,
         "priceOfSize": [14, 20, 25],
-        "icon": ""
+        "icon": "/assets/img/pizza-default.png"
       },
       {
         "id": 17,
@@ -151,7 +151,7 @@
         "description": "Try to eat that!",
         "isActive": true,
         "priceOfSize": [65, 68, 72],
-        "icon": ""
+        "icon": "/assets/img/pizza-default.png"
       }
 
      

@@ -5,14 +5,12 @@
         <img class ="product icon" [src]="product.icon">
     <div class="product text">
       <div class="product text name">{{product.name}}</div>
-      <div class="product textdescription">{{product.description}}</div>
+      <div class="product text description">{{product.description}}</div>
     </div>
-
+    <div class = "product buy-text">Click price to buy</div>
     <div class="product button" *ngFor="let price of product.priceOfSize">
       <div class="product button description">XXL</div>
       <div class="product button clickable">{{price}}</div>
-
-
     </div>
 
 
