@@ -8,9 +8,9 @@ import { environment } from '../environments/environment';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
-import { BasketComponent } from './basket/basket.component';
 import { ContactComponent } from './contact/contact.component';
 import { CollectingComponent } from './collecting/collecting.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -18,9 +18,9 @@ import { CollectingComponent } from './collecting/collecting.component';
     HeaderComponent,
     FooterComponent,
     MenuComponent,
-    BasketComponent,
     ContactComponent,
-    CollectingComponent
+    CollectingComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
