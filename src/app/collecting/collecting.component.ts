@@ -36,7 +36,7 @@ export class CollectingComponent implements OnInit, OnDestroy {
   }
 
   private loadProducts() {
-    this.service.getProducts()
+    this.service.getProductsByCategory(this.category)
       .subscribe(res => this.products = res);
     console.log("Loading products...");
   }

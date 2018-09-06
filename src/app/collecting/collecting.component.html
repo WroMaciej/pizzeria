@@ -1,3 +1,8 @@
-<p>
-  collecting works!
-</p>
+<div class = "collecting-pattern">
+  <div>Products:</div>
+
+  <div class="product"  [routerLink]="[product]" *ngFor="let product of products">{{product.name}}</div>
+
+
+
+</div>
