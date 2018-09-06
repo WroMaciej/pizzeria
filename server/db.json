@@ -1,0 +1,103 @@
+{
+    "product": [
+      {
+        "id": 1,
+        "category": "pizza",
+        "name": "Marherita",
+        "description": "This is a simplest pizza ever.",
+        "isActive": true,
+        "priceOfSize": [18, 20, 22],
+        "icon": ""
+      },
+      {
+        "id": 2,
+        "category": "pizza",
+        "name": "Hawaii",
+        "description": "Ananasses everywhere!",
+        "isActive": true,
+        "priceOfSize": [22, 25, 27],
+        "icon": ""
+      },
+      {
+        "id": 3,
+        "category": "pasta",
+        "name": "Masta Pasta",
+        "description": "Tasty pasta.",
+        "isActive": true,
+        "priceOfSize": [14, 16],
+        "icon": ""
+      },
+      {
+        "id": 4,
+        "category": "pizza",
+        "name": "Hidden pizza",
+        "description": "Can`t touch this.",
+        "isActive": false,
+        "priceOfSize": [18, 20, 22],
+        "icon": ""
+      },
+      {
+        "id": 5,
+        "category": "drink",
+        "name": "Alabama",
+        "description": "Bahama alabama?",
+        "isActive": true,
+        "priceOfSize": [13],
+        "icon": ""
+      },
+      {
+        "id": 6,
+        "category": "drink",
+        "name": "Beer",
+        "description": "Cool beer",
+        "isActive": true,
+        "priceOfSize": [7],
+        "icon": ""
+      },
+      {
+        "id": 7,
+        "category": "pasta",
+        "name": "Pasta Bombasta",
+        "description": "Fine pasta.",
+        "isActive": true,
+        "priceOfSize": [17, 27],
+        "icon": ""
+      },
+      {
+        "id": 8,
+        "category": "pizza",
+        "name": "Al Bano",
+        "description": "Felicita.",
+        "isActive": true,
+        "priceOfSize": [32, 42, 52],
+        "icon": ""
+      },
+      {
+        "id": 8,
+        "category": "pizza",
+        "name": "Tora Tora",
+        "description": "Tora bora.",
+        "isActive": true,
+        "priceOfSize": [14, 18, 24],
+        "icon": ""
+      }
+
+     
+    ],
+    
+    "user": [
+      {
+        "id": 1,
+        "login": "admin",
+        "password": "admin",
+        "isAdmin": true
+      },
+      {
+        "id": 2,
+        "login": "user",
+        "password": "user",
+        "isAdmin": false
+      }
+    ]
+  }
+  
