@@ -1,4 +1,6 @@
-.collecting-pattern{
+.collecting-pattern {
+    overflow:hidden;
+    overflow-y:scroll;
     display: inline-block;
     vertical-align: top;
     background-color: beige;
@@ -7,6 +9,70 @@
     
 }
 
-.product{
-    
+.product {
+    display: block;
+    margin-left: 50px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    height: 90px;
+}
+
+.product.icon {
+    display: inline-block;
+    margin-top: auto;
+    width: 80px;
+    height: 80px;
+
+}
+
+.product.text{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.product.text.name {
+    font-size: 20px;
+    width: 400px;
+    height: 30px;
+    background-color: gray;
+}
+
+.product.text.description {
+    vertical-align: top;
+    border-style: none;
+    width: 400px;
+    font-size: 12px;
+    color: blue;
+    height: 100%;
+
+}
+
+.product.button {
+    display: inline-block;
+    vertical-align: top;
+    //justify-content: center;
+    width: 60px;
+    height: 100%;
+    background-color: yellow;
+}
+
+.product.button.description {
+    display: block;
+    //justify-content: center;
+    width: 35px;
+    height: 35px;
+    background-color: orange;
+}
+
+.product.button.clickable {
+    display: block;
+    //justify-content: center;
+    width: 35px;
+    height: 35px;
+    background-color: red;
+}
+
+.product.button.clickable:hover{
+    cursor: pointer;
 }

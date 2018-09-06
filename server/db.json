@@ -3,11 +3,11 @@
       {
         "id": 1,
         "category": "pizza",
-        "name": "Marherita",
+        "name": "Margherita",
         "description": "This is a simplest pizza ever.",
         "isActive": true,
         "priceOfSize": [18, 20, 22],
-        "icon": ""
+        "icon": "/assets/img/pizza-default.png"
       },
       {
         "id": 2,
@@ -73,12 +73,84 @@
         "icon": ""
       },
       {
-        "id": 8,
+        "id": 9,
         "category": "pizza",
-        "name": "Tora Tora",
-        "description": "Tora bora.",
+        "name": "Angelo",
+        "description": "Good pizza.",
         "isActive": true,
-        "priceOfSize": [14, 18, 24],
+        "priceOfSize": [15, 16, 22],
+        "icon": ""
+      },
+      {
+        "id": 10,
+        "category": "pizza",
+        "name": "Africana",
+        "description": "With banana.",
+        "isActive": true,
+        "priceOfSize": [13, 14, 24],
+        "icon": ""
+      },
+      {
+        "id": 11,
+        "category": "pizza",
+        "name": "Cubana",
+        "description": "From Havana.",
+        "isActive": true,
+        "priceOfSize": [24, 25, 26],
+        "icon": ""
+      },
+      {
+        "id": 12,
+        "category": "pizza",
+        "name": "Ciao",
+        "description": "Siciliano.",
+        "isActive": true,
+        "priceOfSize": [22, 32, 42],
+        "icon": ""
+      },
+      {
+        "id": 13,
+        "category": "pizza",
+        "name": "Buena",
+        "description": "Vista.",
+        "isActive": true,
+        "priceOfSize": [13, 16, 18],
+        "icon": ""
+      },
+      {
+        "id": 14,
+        "category": "pizza",
+        "name": "Bambini",
+        "description": "For bambinis.",
+        "isActive": true,
+        "priceOfSize": [8, 9, 10],
+        "icon": ""
+      },
+      {
+        "id": 15,
+        "category": "pizza",
+        "name": "Clemenza",
+        "description": "Be careful.",
+        "isActive": true,
+        "priceOfSize": [14, 18, 26],
+        "icon": ""
+      },
+      {
+        "id": 16,
+        "category": "pizza",
+        "name": "Corrida",
+        "description": "Hot pizza.",
+        "isActive": true,
+        "priceOfSize": [14, 20, 25],
+        "icon": ""
+      },
+      {
+        "id": 17,
+        "category": "pizza",
+        "name": "La bomba",
+        "description": "Try to eat that!",
+        "isActive": true,
+        "priceOfSize": [65, 68, 72],
         "icon": ""
       }
 

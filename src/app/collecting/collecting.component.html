@@ -1,7 +1,25 @@
-<div class = "collecting-pattern">
+<div class="collecting-pattern">
   <div>Products:</div>
 
-  <div class="product"  [routerLink]="[product]" *ngFor="let product of products">{{product.name}}</div>
+  <div class="product" [routerLink]="[product]" *ngFor="let product of products">
+        <img class ="product icon" [src]="product.icon">
+    <div class="product text">
+      <div class="product text name">{{product.name}}</div>
+      <div class="product textdescription">{{product.description}}</div>
+    </div>
+
+    <div class="product button" *ngFor="let price of product.priceOfSize">
+      <div class="product button description">XXL</div>
+      <div class="product button clickable">{{price}}</div>
+
+
+    </div>
+
+
+
+
+
+  </div>
 
 
 
