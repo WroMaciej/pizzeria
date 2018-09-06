@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { Product } from '../model/product.model';
 import { ProductService } from './product.service';
+import { Position } from '../model/position.model'
 
 @Component({
   selector: 'app-collecting',
@@ -35,8 +36,15 @@ export class CollectingComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
-  addToCart(product: Product, event: Event){
-    
+  addToCart(chosenProduct: Product, chosenSize: number, event: Event){
+    const position: Position = {
+      product: chosenProduct,
+      size: chosenSize,
+      quantity: 1
+    }
+
+    //!!!!!!!!!!! TODO CALL SERVICE AND ADD POSITION
+
 
   }
 

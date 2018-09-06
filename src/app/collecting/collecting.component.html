@@ -8,9 +8,9 @@
       <div class="product text description">{{product.description}}</div>
     </div>
     <div class = "product buy-text">Click price to buy</div>
-    <div class="product button" *ngFor="let price of product.priceOfSize">
+    <div class="product button" *ngFor="let price of product.priceOfSize; index as size">
       <div class="product button description">XXL</div>
-      <div class="product button clickable" (click)="addToCart(product, $event)">{{price}}</div>
+      <div class="product button clickable" (click)="addToCart(product, size , $event)">{{price}}</div>
     </div>
 
 
