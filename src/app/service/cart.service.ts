@@ -15,17 +15,19 @@ export class CartService {
 
     addChoice(choiceToAdd: Choice) {
         if (this.isChoiceInCart(choiceToAdd)) {
+            console.log("Adding new choice to existing position in cart.");
             this.positions[this.getChoiceIndexInCart(choiceToAdd)].quantity += 1;
         }
         else {
+            console.log("Adding new position to cart.");
             const newPosition: Position = {
                 choice: choiceToAdd,
                 quantity: 1
             }
             this.positions.push(newPosition);
         }
-
         this.totalPrice.next(this.calculateTotalPrice());
+        console.log("Now cart has " + this.getPositionsNumber() + " positions.");
     }
 
     getTotalPrice(): Observable<number> {
@@ -53,10 +55,14 @@ export class CartService {
         return sum;
     }
 
+    private areChoicesEqual(choice1: Choice, choice2: Choice): boolean{
+        return (choice1.product.id == choice2.product.id && choice1.size == choice2.size);
+    }
+
     private getChoiceIndexInCart(choice: Choice): number {
         let index = -1;
         for (let i = 0; i < this.getPositionsNumber(); i++) {
-            if (this.positions[i].choice == choice) {
+            if (this.areChoicesEqual(this.positions[i].choice, choice)) {
                 return i;
             }
         }
