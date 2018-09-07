@@ -19,6 +19,7 @@ export class CollectingComponent implements OnInit, OnDestroy {
 
 
   category: Category;
+  sizeNamesForProducts: Array<Array<string>>;
 
   products: Array<Product>;
 
@@ -48,9 +49,30 @@ export class CollectingComponent implements OnInit, OnDestroy {
     this.service.getProductsByCategory(this.category)
       .subscribe(res => this.products = res);
     console.log("Loading products...");
+    this.populateSizeNamesForProducts();
   }
 
-  urlToCategory(url: string): Category {
+  private sizeNames(category: Category, maxSize: number): Array<string> {
+    const sizesPizza: string[] = ["Small (20cm)", "Medium (25cm)", "Big (35cm)", "MONSTER (50cm)"];
+    const sizesPasta: string[] = ["Medium (300g)", "Big (400g)", "The biggest (500g)"];
+    const sizesDrink: string[] = ["Standard", "Big", "UNLIMITED"];
+    if (maxSize < 2 ){
+      return [""];
+    }
+
+    if (maxSize)
+  }
+
+  //TODO think about better place to that
+  private populateSizeNamesForProducts(){
+    for (let i: number = 0; i < this.products.length; i++){
+
+    }
+  }
+
+
+
+  private urlToCategory(url: string): Category {
     let categoryName: string = url.slice(1, url.length);
     categoryName = categoryName.charAt(0).toUpperCase() + categoryName.substr(1).toLowerCase();
     return Category[categoryName];

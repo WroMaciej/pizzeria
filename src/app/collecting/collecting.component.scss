@@ -18,6 +18,10 @@
     height: 90px;
 }
 
+.product:hover {
+    background-color: lightgray;
+}
+
 .product.icon {
     display: inline-block;
     margin-left: 5px;
