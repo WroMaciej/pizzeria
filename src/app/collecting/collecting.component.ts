@@ -34,7 +34,7 @@ export class CollectingComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
   }
 
-  addToCart(chosenProduct: Product, chosenSize: number, event: Event) {
+  addToCart(chosenProduct: Product, chosenSize: number) {
     const choice: Choice = {
       product: chosenProduct,
       size: chosenSize,
