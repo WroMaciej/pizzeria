@@ -22,20 +22,16 @@ export class CollectingComponent implements OnInit, OnDestroy {
 
   products: Array<Product>;
 
-  sub: Subscription;
-
 
   constructor(private router: Router, readonly service: ProductService, private cartService: CartService) {
     this.category = this.urlToCategory(router.url);
   }
 
   ngOnInit() {
-    console.log("Chosen category: " + this.category);
     this.loadProducts();
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
   }
 
   addToCart(chosenProduct: Product, chosenSize: number, event: Event) {
@@ -48,6 +44,7 @@ export class CollectingComponent implements OnInit, OnDestroy {
   }
 
   private loadProducts() {
+    console.log("Chosen category: " + this.category);
     this.service.getProductsByCategory(this.category)
       .subscribe(res => this.products = res);
     console.log("Loading products...");
