@@ -1,7 +1,7 @@
 <div class="collecting-pattern">
   <div>Products:</div>
 
-  <div class="product" *ngFor="let product of products">
+  <div class="product" *ngFor="let product of products; index as productIndex">
         <img class ="product icon" [src]="product.icon">
     <div class="product text">
       <div class="product text name">{{product.name}}</div>
@@ -9,12 +9,9 @@
     </div>
     <div class = "product buy-text">Click price to buy</div>
     <div class="product button" *ngFor="let price of product.priceOfSize; index as size">
-      <div class="product button description">XXL</div>
+      <div class="product button description">{{sizeNamesForProducts[productIndex][size]}}</div>
       <div class="product button clickable" (click)="addToCart(product, size)">{{price}}</div>
     </div>
-
-
-
   </div>
 
 

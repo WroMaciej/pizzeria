@@ -152,6 +152,15 @@
         "isActive": true,
         "priceOfSize": [65, 68, 72],
         "icon": "/assets/img/pizza-default.png"
+      },
+      {
+        "id": 18,
+        "category": "pizza",
+        "name": "La Angulare",
+        "description": "Even monster size is available",
+        "isActive": true,
+        "priceOfSize": [65, 68, 72, 99],
+        "icon": "/assets/img/pizza-default.png"
       }
 
      
