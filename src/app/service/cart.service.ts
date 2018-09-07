@@ -43,6 +43,10 @@ export class CartService {
         return position.choice.product.priceOfSize[position.choice.size] * position.quantity;
     }
 
+    getAllPositions(): Array<Position> {
+        return this.positions;
+    }
+
     private calculateTotalPrice(): number {
         let sum: number = 0;
         for (let i = 0; i < this.getPositionsNumber(); i++) {
@@ -72,9 +76,7 @@ export class CartService {
         return true;
     }
 
-    getAllPositions(): Array<Position> {
-        return this.positions;
-    }
+    
 
 }
 

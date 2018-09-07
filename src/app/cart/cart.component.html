@@ -9,6 +9,12 @@
       </div>
       <div class = "product buy-text">Size: {{position.choice.size}}</div>
       <div class = "product buy-text">Quantity: {{position.quantity}}</div>
+      <div class = "product buy-text">
+        Price:  {{position.quantity}} x {{position.choice.product.priceOfSize[position.choice.size] | currency: '€'}} = 
+        <b>{{position.quantity * position.choice.product.priceOfSize[position.choice.size]  | currency: '€'}}</b>
+      </div>
+
+
       <!-- <div class="product button" *ngFor="let price of product.priceOfSize; index as size">
         <div class="product button description">{{sizeNamesForProducts[productIndex][size]}}</div>
         <div class="product button clickable" (click)="addToCart(product, size)">{{price}}</div>

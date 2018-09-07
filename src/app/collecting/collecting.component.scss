@@ -68,9 +68,9 @@
     display: inline-block;
     align-content: center;
     vertical-align: top;
-    margin-top: 5px;
+    margin-top: 1px;
     margin-left: 10px;
-    width: 45px;
+    width: 65px;
     height: 75px;
     border-style: none;
 }
@@ -80,19 +80,20 @@
     margin-left: 0px;
     margin-top: 0px;
     height: 35px;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .product.button.clickable {
     display: block;
     margin-left: 0px;
-    margin-top:0px;
+    margin-top:10px;
     height: 35px;
-    font-size: 25px;
+    font-size: 15px;
     background-color: red;
     border-style: solid;
 }
 
 .product.button.clickable:hover{
     cursor: pointer;
+    background-color: greenyellow;
 }

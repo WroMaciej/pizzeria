@@ -46,7 +46,6 @@ export class CollectingComponent implements OnInit, OnDestroy {
     console.log("Chosen category: " + this.category);
     this.service.getProductsByCategory(this.category)
       .subscribe(res => this.products = res,()=>{}, ()=> this.populateSizeNamesForProducts());
-
     console.log("Products loaded.");    
   }
 
@@ -55,7 +54,7 @@ export class CollectingComponent implements OnInit, OnDestroy {
     const sizesPasta: Array<string> = ["Medium (300g)", "Big (400g)", "The biggest (500g)"];
     const sizesDrink: Array<string> = ["Standard", "Big", "UNLIMITED"];
     if (sizesAvailable < 2 ){
-      return [""];
+      return ["Normal"];
     }
     else{
       if (category == Category.Pizza) {
