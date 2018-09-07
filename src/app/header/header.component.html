@@ -14,9 +14,16 @@
   </div>
 
   <div class="topnav">
-    <a class="active" routerLink="">Home</a>
-    <a routerLink="about">About</a>
-    <a routerLink="contact">Contact</a>
+    <div>
+      <a class="active" routerLink="">Home</a>
+      <a routerLink="about">About</a>
+      <a routerLink="contact">Contact</a>
+    </div>
+
+    <div>Total cost of order: </div>
+    <div>{{cartTotalPrice}}</div>
+
+
     <div class="login-container">
       <form action="/action_page.php">
         <input type="text" placeholder="Username" name="username">

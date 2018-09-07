@@ -38,12 +38,12 @@ export class CollectingComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
-  addToCart(chosenProduct: Product, chosenSize: number, event: Event){
+  addToCart(chosenProduct: Product, chosenSize: number, event: Event) {
     const choice: Choice = {
       product: chosenProduct,
       size: chosenSize,
     }
-
+    console.log("Chosen product name: " + chosenProduct.name + " with size: " + chosenSize);
     this.cartService.addChoice(choice);
   }
 

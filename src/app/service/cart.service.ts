@@ -2,17 +2,19 @@ import { Injectable } from '@angular/core';
 import { Position } from '../model/position.model';
 import { Product } from '../model/product.model';
 import { Choice } from '../model/choice.model';
+import { Subject, Observable } from 'rxjs';
 
 
 @Injectable()
 export class CartService {
-    positions: Array<Position>;
+    positions: Array<Position> = [];
+    private totalPrice = new Subject<number>();
 
     constructor() {
     }
 
-    addChoice(choiceToAdd: Choice){
-        if (this.isChoiceInCart(choiceToAdd)){
+    addChoice(choiceToAdd: Choice) {
+        if (this.isChoiceInCart(choiceToAdd)) {
             this.positions[this.getChoiceIndexInCart(choiceToAdd)].quantity += 1;
         }
         else {
@@ -22,6 +24,12 @@ export class CartService {
             }
             this.positions.push(newPosition);
         }
+
+        this.totalPrice.next(this.calculateTotalPrice());
+    }
+
+    getTotalPrice(): Observable<number> {
+        return this.totalPrice.asObservable();
     }
 
     getPositionsNumber(): number {
@@ -31,13 +39,13 @@ export class CartService {
     priceOfPosition(positionNumber: number): number {
         let sum: number = 0;
         this.positions.forEach(
-            position => 
-            sum += position.choice.product.priceOfSize[position.choice.size] * position.quantity
-            );
+            position =>
+                sum += position.choice.product.priceOfSize[position.choice.size] * position.quantity
+        );
         return sum;
     }
 
-    calculateTotalPrice(): number {
+    private calculateTotalPrice(): number {
         let sum: number = 0;
         for (let i = 0; i < this.getPositionsNumber(); i++) {
             sum = sum + this.priceOfPosition(i);
@@ -48,7 +56,7 @@ export class CartService {
     private getChoiceIndexInCart(choice: Choice): number {
         let index = -1;
         for (let i = 0; i < this.getPositionsNumber(); i++) {
-            if (this.positions[i].choice == choice){
+            if (this.positions[i].choice == choice) {
                 return i;
             }
         }
