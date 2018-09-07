@@ -39,12 +39,8 @@ export class CartService {
     }
 
     priceOfPosition(positionNumber: number): number {
-        let sum: number = 0;
-        this.positions.forEach(
-            position =>
-                sum += position.choice.product.priceOfSize[position.choice.size] * position.quantity
-        );
-        return sum;
+        let position: Position = this.positions[positionNumber];
+        return position.choice.product.priceOfSize[position.choice.size] * position.quantity;
     }
 
     private calculateTotalPrice(): number {
