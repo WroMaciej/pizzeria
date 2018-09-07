@@ -11,7 +11,7 @@ export class CartComponent implements OnInit {
 
   productQuantities: Array<ProductQuantity>;
 
-  totalPrice: number = 0;
+  cartTotalPrice: number;
 
   constructor(private cartService: CartService) {
    }
@@ -23,6 +23,8 @@ export class CartComponent implements OnInit {
   private loadPositions() {
     this.productQuantities = this.cartService.getAllProductQuantities(); //.getPositionsInCart().subscribe(totalPrice => this.cartTotalPrice = totalPrice);
     console.log("Positions in cart: " + this.productQuantities.length);
+    this.cartTotalPrice = this.cartService.calculateTotalPrice();
+    console.log(this.cartTotalPrice);
   }
 
 }

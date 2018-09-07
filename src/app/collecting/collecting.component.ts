@@ -45,18 +45,18 @@ export class CollectingComponent implements OnInit, OnDestroy {
   private loadProducts() {
     console.log("Chosen category: " + this.category);
     this.service.getProductsByCategory(this.category)
-      .subscribe(res => this.products = res,()=>{}, ()=> this.populateSizeNamesForProducts());
-    console.log("Products loaded.");    
+      .subscribe(res => this.products = res, () => { }, () => this.populateSizeNamesForProducts());
+    console.log("Products loaded.");
   }
 
   private sizeNames(category: Category, sizesAvailable: number): Array<string> {
     const sizesPizza: Array<string> = ["Small (20cm)", "Medium (25cm)", "Big (35cm)", "MONSTER (50cm)"];
     const sizesPasta: Array<string> = ["Medium (300g)", "Big (400g)", "The biggest (500g)"];
     const sizesDrink: Array<string> = ["Standard", "Big", "UNLIMITED"];
-    if (sizesAvailable < 2 ){
+    if (sizesAvailable < 2) {
       return ["Normal"];
     }
-    else{
+    else {
       if (category == Category.Pizza) {
         return sizesPizza;
       }
@@ -70,10 +70,10 @@ export class CollectingComponent implements OnInit, OnDestroy {
   }
 
   //TODO think about better place to that
-  private populateSizeNamesForProducts(){
+  private populateSizeNamesForProducts() {
     console.log("Number of products: " + this.products.length);
-    
-    for (let i: number = 0; i < this.products.length; i++){
+
+    for (let i: number = 0; i < this.products.length; i++) {
       this.sizeNamesForProducts.push(this.sizeNames(this.products[i].category, this.products[i].priceOfSize.length));
     }
   }

@@ -3,10 +3,24 @@
     overflow-y:scroll;
     display: inline-block;
     vertical-align: top;
-    background-color: rgb(240, 145, 21);
+    background-color: beige;
     width: 80%;
     height: 500px;
-    
+}
+
+.order {
+    display: block;
+    background-color: darkorchid;
+    height: 100px;
+    width: 100%;
+}
+
+.order.inner {
+    display: block;
+    background-color: yellow;
+    height: 80px;
+    width: 100px;
+    margin-left: 800px;
 }
 
 .product {
@@ -29,6 +43,7 @@
     width: 80px;
     height: 80px;
     border-style: none;
+
 }
 
 .product.text{
@@ -58,7 +73,7 @@
 .product.buy-text{
     display: inline-block;
     vertical-align: top;
-    margin-top: 45px;
+    margin-top: 0px;
     height: auto;
     border-style: none;
 }
@@ -67,31 +82,25 @@
     display: inline-block;
     align-content: center;
     vertical-align: top;
-    margin-top: 5px;
+    margin-top: 1px;
     margin-left: 10px;
-    width: 45px;
+    width: 65px;
     height: 75px;
     border-style: none;
 }
 
-.product.button.description {
-    display: block;
-    margin-left: 0px;
-    margin-top: 0px;
-    height: 35px;
-    font-size: 11px;
-}
 
 .product.button.clickable {
     display: block;
     margin-left: 0px;
-    margin-top:0px;
+    margin-top:10px;
     height: 35px;
-    font-size: 25px;
+    font-size: 15px;
     background-color: red;
     border-style: solid;
 }
 
 .product.button.clickable:hover{
     cursor: pointer;
+    background-color: greenyellow;
 }

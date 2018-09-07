@@ -5,26 +5,49 @@
     <img class="product icon" [src]="productQuantity.productVariant.product.icon">
     <div class="product text">
       <div class="product text name">{{productQuantity.productVariant
-  .product.name}}</div>
+        .product.name}}</div>
       <div class="product text description">{{productQuantity.productVariant
-  .product.description}}</div>
+        .product.description}}</div>
     </div>
     <div class="product buy-text">Size: {{productQuantity.productVariant
-.size}}</div>
+      .size}}</div>
     <div class="product buy-text">Quantity: {{productQuantity.quantity}}</div>
     <div class="product buy-text">
       Price: {{productQuantity.quantity}} x {{productQuantity.productVariant
-  .product.priceOfSize[productQuantity.productVariant
-  .size] | currency: 'EUR'}} =
+      .product.priceOfSize[productQuantity.productVariant
+      .size] | currency: 'EUR'}} =
       <b>{{productQuantity.quantity * productQuantity.productVariant
-  .product.priceOfSize[productQuantity.productVariant
-  .size] | currency: 'EUR'}}</b>
+        .product.priceOfSize[productQuantity.productVariant
+        .size] | currency: 'EUR'}}</b>
     </div>
   </div>
 
-  <div class="product buy-text">
-    TOTAL PRICE: {{totalPrice}}
-  </div>
+  <form action="/action_page.php">
+    First name:
+    <input type="text" name="firstname" value="Mickey"><br>
+    Last name:
+    <input type="text" name="lastname" value="Mouse"><br>
+    Mobile:
+    <input type="text" name="firstname" value="Mickey"><br>
+    City:
+    <input type="text" name="firstname" value="Mickey"><br>
+    Street:
+    <input type="text" name="firstname" value="Mickey"><br>
+    Zip-Code:
+    <input type="text" name="firstname" value="Mickey"><br>
+    
+    <br>
+    <input type="submit" value="Submit">
+  </form>
 
+  <div class="order">
+    <div class="order inner">
+      <div class="product buy-text">
+        TOTAL PRICE: {{cartTotalPrice | currency: 'EUR'}}
+      </div>
+
+      <div class="product button clickable" (click)="order()">ORDER</div>
+    </div>
+  </div>
 
 </div>

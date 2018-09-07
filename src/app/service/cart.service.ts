@@ -47,7 +47,7 @@ export class CartService {
         return this.productQuantities;
     }
 
-    private calculateTotalPrice(): number {
+    calculateTotalPrice(): number {
         let sum: number = 0;
         for (let i = 0; i < this.getProductQuantityNumber(); i++) {
             sum = sum + this.priceOfProductQuantity(i);
