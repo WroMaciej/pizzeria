@@ -22,23 +22,23 @@
     </div>
   </div>
 
-  <form action="/action_page.php">
+
+
+  <form #address = ngForm (ngSubmit) = "confirmOrder(address.value)">
     First name:
-    <input type="text" name="firstname" value="Mickey"><br>
+    input type = "text" name = "emailid" placeholder = "emailid" ngModel
+    <input type="text" name="firstName" placeholder="firstName" ngModel><br>
     Last name:
-    <input type="text" name="lastname" value="Mouse"><br>
+    <input type="text" name="lastName" placeholder="lastName" value="Mouse"><br>
     Mobile:
-    <input type="text" name="firstname" value="Mickey"><br>
+    <input type="text" name="mobile" placeholder="mobile" ngModel><br>
     City:
-    <input type="text" name="firstname" value="Mickey"><br>
+    <input type="text" name="city" placeholder="city" ngModel><br>
     Street:
-    <input type="text" name="firstname" value="Mickey"><br>
+    <input type="text" name="street" placeholder="street" ngModel><br>
     Zip-Code:
-    <input type="text" name="firstname" value="Mickey"><br>
-    
-    <br>
-    <input type="submit" value="Submit">
-  </form>
+    <input type="text" name="zipCode" placeholder="zipCode" ngModel><br>
+  
 
   <div class="order">
     <div class="order inner">
@@ -46,8 +46,10 @@
         TOTAL PRICE: {{cartTotalPrice | currency: 'EUR'}}
       </div>
 
-      <div class="product button clickable" (click)="order()">ORDER</div>
+      <button type = "submit" class="product button clickable">ORDER</button>
     </div>
   </div>
+
+</form>
 
 </div>

@@ -17,6 +17,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { UserService } from './service/user.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 
 
 const appRoutes: Routes = [
@@ -47,7 +48,9 @@ const appRoutes: Routes = [
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule  
   ],
   providers: [UserService, CartService],
   bootstrap: [AppComponent]
