@@ -1,3 +1,4 @@
+import { CartService } from './../service/cart.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Category } from '../model/category.model';
 import { Router } from '@angular/router';
@@ -5,8 +6,9 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { Product } from '../model/product.model';
-import { ProductService } from './product.service';
+import { ProductService } from '../service/product.service';
 import { Position } from '../model/position.model'
+import { Choice } from '../model/choice.model';
 
 @Component({
   selector: 'app-collecting',
@@ -23,7 +25,7 @@ export class CollectingComponent implements OnInit, OnDestroy {
   sub: Subscription;
 
 
-  constructor(private router: Router, readonly service: ProductService) {
+  constructor(private router: Router, readonly service: ProductService, private cartService: CartService) {
     this.category = this.urlToCategory(router.url);
   }
 
@@ -37,15 +39,12 @@ export class CollectingComponent implements OnInit, OnDestroy {
   }
 
   addToCart(chosenProduct: Product, chosenSize: number, event: Event){
-    const position: Position = {
+    const choice: Choice = {
       product: chosenProduct,
       size: chosenSize,
-      quantity: 1
     }
 
-    //!!!!!!!!!!! TODO CALL SERVICE AND ADD POSITION
-
-
+    this.cartService.addChoice(choice);
   }
 
   private loadProducts() {

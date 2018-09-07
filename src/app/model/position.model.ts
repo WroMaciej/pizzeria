@@ -1,7 +1,7 @@
 import { Product } from './product.model';
+import { Choice } from './choice.model';
 
 export interface Position {
-    product: Product;
-    size: number;
+    choice: Choice;
     quantity: number;
 }

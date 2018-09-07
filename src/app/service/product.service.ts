@@ -9,9 +9,8 @@ import {Category} from '../model/category.model';
 })
 export class ProductService {
 
-  constructor(
-    readonly http: HttpClient,
-  ) {}
+  constructor(readonly http: HttpClient) {
+  }
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>('/api/products');
