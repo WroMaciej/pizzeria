@@ -1,3 +1,4 @@
+import { CartService } from './service/cart.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +16,7 @@ import { CartComponent } from './cart/cart.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { UserService } from './service/user.service';
 
 
 const appRoutes: Routes = [
@@ -47,7 +49,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [],
+  providers: [UserService, CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
