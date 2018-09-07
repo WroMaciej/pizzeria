@@ -17,10 +17,8 @@ import { Choice } from '../model/choice.model';
 })
 export class CollectingComponent implements OnInit, OnDestroy {
 
-
   category: Category;
   sizeNamesForProducts: Array<Array<string>> = [];
-
   products: Array<Product>;
 
 

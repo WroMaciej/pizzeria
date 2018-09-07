@@ -72,6 +72,10 @@ export class CartService {
         return true;
     }
 
+    getAllPositions(): Array<Position> {
+        return this.positions;
+    }
+
 }
 
 
