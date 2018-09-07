@@ -1,76 +1,76 @@
+import { ProductVariant } from './../model/product.variant.model';
 import { Injectable } from '@angular/core';
-import { Position } from '../model/position.model';
+import { ProductQuantity } from '../model/product.quantity.model';
 import { Product } from '../model/product.model';
-import { Choice } from '../model/choice.model';
 import { Subject, Observable } from 'rxjs';
 
 
 @Injectable()
 export class CartService {
-    positions: Array<Position> = [];
+    productQuantities: Array<ProductQuantity> = [];
     private totalPrice = new Subject<number>();
 
     constructor() {
     }
 
-    addChoice(choiceToAdd: Choice) {
-        if (this.isChoiceInCart(choiceToAdd)) {
+    addChoice(productVariantToAdd: ProductVariant) {
+        if (this.isProductVariantInCart(productVariantToAdd)) {
             console.log("Adding new choice to existing position in cart.");
-            this.positions[this.getChoiceIndexInCart(choiceToAdd)].quantity += 1;
+            this.productQuantities[this.getProductVariantIndexInCart(productVariantToAdd)].quantity += 1;
         }
         else {
             console.log("Adding new position to cart.");
-            const newPosition: Position = {
-                choice: choiceToAdd,
+            const newPosition: ProductQuantity = {
+                productVariant: productVariantToAdd,
                 quantity: 1
             }
-            this.positions.push(newPosition);
+            this.productQuantities.push(newPosition);
         }
         this.totalPrice.next(this.calculateTotalPrice());
-        console.log("Now cart has " + this.getPositionsNumber() + " positions.");
+        console.log("Now cart has " + this.getProductQuantityNumber() + " positions.");
     }
 
     getTotalPrice(): Observable<number> {
         return this.totalPrice.asObservable();
     }
 
-    getPositionsNumber(): number {
-        return this.positions.length;
+    getProductQuantityNumber(): number {
+        return this.productQuantities.length;
     }
 
-    priceOfPosition(positionNumber: number): number {
-        let position: Position = this.positions[positionNumber];
-        return position.choice.product.priceOfSize[position.choice.size] * position.quantity;
+    priceOfProductQuantity(positionNumber: number): number {
+        let position: ProductQuantity = this.productQuantities[positionNumber];
+        return position.productVariant.product.priceOfSize[position.productVariant.size] * position.quantity;
     }
 
-    getAllPositions(): Array<Position> {
-        return this.positions;
+    getAllProductQuantities(): Array<ProductQuantity> {
+        return this.productQuantities;
     }
 
     private calculateTotalPrice(): number {
         let sum: number = 0;
-        for (let i = 0; i < this.getPositionsNumber(); i++) {
-            sum = sum + this.priceOfPosition(i);
+        for (let i = 0; i < this.getProductQuantityNumber(); i++) {
+            sum = sum + this.priceOfProductQuantity(i);
         }
         return sum;
     }
 
-    private areChoicesEqual(choice1: Choice, choice2: Choice): boolean{
-        return (choice1.product.id == choice2.product.id && choice1.size == choice2.size);
+    private areProductVariantsEqual(variant1: ProductVariant, variant2: ProductVariant): boolean{
+        return (variant1.product.id == variant2.product.id && variant1.size == variant2.size);
     }
 
-    private getChoiceIndexInCart(choice: Choice): number {
+    private getProductVariantIndexInCart(productVariant: ProductVariant): number {
         let index = -1;
-        for (let i = 0; i < this.getPositionsNumber(); i++) {
-            if (this.areChoicesEqual(this.positions[i].choice, choice)) {
+        for (let i = 0; i < this.getProductQuantityNumber(); i++) {
+            if (this.areProductVariantsEqual(this.productQuantities[i].productVariant, productVariant)) {
                 return i;
             }
         }
         return index;
     }
 
-    private isChoiceInCart(choice: Choice): boolean {
-        if (this.getChoiceIndexInCart(choice) == -1) {
+    private isProductVariantInCart(choice: ProductVariant): boolean {
+        if (this.getProductVariantIndexInCart(choice) == -1) {
             return false;
         }
         return true;

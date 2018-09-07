@@ -7,8 +7,8 @@ import { takeUntil } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { Product } from '../model/product.model';
 import { ProductService } from '../service/product.service';
-import { Position } from '../model/position.model'
-import { Choice } from '../model/choice.model';
+import { ProductQuantity } from '../model/product.quantity.model'
+import { ProductVariant } from '../model/product.variant.model';
 
 @Component({
   selector: 'app-collecting',
@@ -34,12 +34,12 @@ export class CollectingComponent implements OnInit, OnDestroy {
   }
 
   addToCart(chosenProduct: Product, chosenSize: number) {
-    const choice: Choice = {
+    const productVariant: ProductVariant = {
       product: chosenProduct,
-      size: chosenSize,
+      size: chosenSize
     }
     console.log("Chosen product name: " + chosenProduct.name + " with size: " + chosenSize);
-    this.cartService.addChoice(choice);
+    this.cartService.addChoice(productVariant);
   }
 
   private loadProducts() {

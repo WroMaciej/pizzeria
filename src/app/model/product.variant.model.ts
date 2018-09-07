@@ -1,6 +1,6 @@
 import { Product } from "./product.model";
 
-export interface Choice{
+export interface ProductVariant {
     product: Product;
     size: number;
 }

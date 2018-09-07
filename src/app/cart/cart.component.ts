@@ -1,4 +1,4 @@
-import { Position } from './../model/position.model';
+import { ProductQuantity } from '../model/product.quantity.model';
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../service/cart.service';
 
@@ -9,7 +9,9 @@ import { CartService } from '../service/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  positions: Array<Position>;
+  productQuantities: Array<ProductQuantity>;
+
+  totalPrice: number = 0;
 
   constructor(private cartService: CartService) {
    }
@@ -19,8 +21,8 @@ export class CartComponent implements OnInit {
   }
 
   private loadPositions() {
-    this.positions = this.cartService.getAllPositions(); //.getPositionsInCart().subscribe(totalPrice => this.cartTotalPrice = totalPrice);
-    console.log("Positions in cart: " + this.positions.length);
+    this.productQuantities = this.cartService.getAllProductQuantities(); //.getPositionsInCart().subscribe(totalPrice => this.cartTotalPrice = totalPrice);
+    console.log("Positions in cart: " + this.productQuantities.length);
   }
 
 }

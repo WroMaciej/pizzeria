@@ -1,26 +1,30 @@
 <div class="collecting-pattern">
-    <div>Products in cart:</div>
-  
-    <div class="product" *ngFor="let position of positions; index as positionIndex">
-          <img class ="product icon" [src]="position.choice.product.icon">
-      <div class="product text">
-        <div class="product text name">{{position.choice.product.name}}</div>
-        <div class="product text description">{{position.choice.product.description}}</div>
-      </div>
-      <div class = "product buy-text">Size: {{position.choice.size}}</div>
-      <div class = "product buy-text">Quantity: {{position.quantity}}</div>
-      <div class = "product buy-text">
-        Price:  {{position.quantity}} x {{position.choice.product.priceOfSize[position.choice.size] | currency: '€'}} = 
-        <b>{{position.quantity * position.choice.product.priceOfSize[position.choice.size]  | currency: '€'}}</b>
-      </div>
+  <div>Products in cart:</div>
 
-
-      <!-- <div class="product button" *ngFor="let price of product.priceOfSize; index as size">
-        <div class="product button description">{{sizeNamesForProducts[productIndex][size]}}</div>
-        <div class="product button clickable" (click)="addToCart(product, size)">{{price}}</div>
-      </div> -->
+  <div class="product" *ngFor="let productQuantity of productQuantities; index as productQuantityIndex">
+    <img class="product icon" [src]="productQuantity.productVariant.product.icon">
+    <div class="product text">
+      <div class="product text name">{{productQuantity.productVariant
+  .product.name}}</div>
+      <div class="product text description">{{productQuantity.productVariant
+  .product.description}}</div>
     </div>
-  
-  
-  
+    <div class="product buy-text">Size: {{productQuantity.productVariant
+.size}}</div>
+    <div class="product buy-text">Quantity: {{productQuantity.quantity}}</div>
+    <div class="product buy-text">
+      Price: {{productQuantity.quantity}} x {{productQuantity.productVariant
+  .product.priceOfSize[productQuantity.productVariant
+  .size] | currency: 'EUR'}} =
+      <b>{{productQuantity.quantity * productQuantity.productVariant
+  .product.priceOfSize[productQuantity.productVariant
+  .size] | currency: 'EUR'}}</b>
+    </div>
   </div>
+
+  <div class="product buy-text">
+    TOTAL PRICE: {{totalPrice}}
+  </div>
+
+
+</div>
