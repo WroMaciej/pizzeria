@@ -1,5 +1,6 @@
+import { Order } from './../model/order.model';
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Product} from '../model/product.model';
 import {Category} from '../model/category.model';
@@ -7,7 +8,7 @@ import {Category} from '../model/category.model';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class DatabaseService {
 
   constructor(readonly http: HttpClient) {
   }
@@ -24,6 +25,10 @@ export class ProductService {
 
   getProduct(id: number): Observable<Product> {
     return this.http.get<Product>(`/api/products/${id}`);
+  }
+
+  addOrder(orderToAdd: Order) : Observable<Order> {
+    return this.http.post<Order>('/api/orders', orderToAdd);
   }
 
   deleteProduct(id: number): Observable<void> {

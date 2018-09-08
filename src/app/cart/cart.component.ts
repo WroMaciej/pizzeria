@@ -2,6 +2,8 @@ import { ProductQuantity } from '../model/product.quantity.model';
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../service/cart.service';
 import { Order } from '../model/order.model';
+import { DatabaseService } from '../service/database.service';
+import { log } from 'util';
 
 @Component({
   selector: 'app-cart',
@@ -21,7 +23,7 @@ export class CartComponent implements OnInit {
   street: string;
   zipCode: string;
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, readonly databaseService: DatabaseService) {
    }
 
   ngOnInit() {
@@ -37,6 +39,7 @@ export class CartComponent implements OnInit {
 
   confirmOrder(data){
     const confirmedOrder: Order = {
+      id: undefined,
       productQuantities: this.productQuantities,
       totalPrice: this.cartTotalPrice,
       firstName: data.firstName,
@@ -45,9 +48,11 @@ export class CartComponent implements OnInit {
       city: data.city,
       street: data.street,
       zipCode: data.zipCode
-    }
+    };
     
     //TODO save to DB
+    this.databaseService.addOrder(confirmedOrder).subscribe(res => console.log(res));
+    console.log("Order added to DB");
     
   }
 

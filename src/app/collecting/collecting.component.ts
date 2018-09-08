@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { Product } from '../model/product.model';
-import { ProductService } from '../service/product.service';
+import { DatabaseService } from '../service/database.service';
 import { ProductQuantity } from '../model/product.quantity.model'
 import { ProductVariant } from '../model/product.variant.model';
 
@@ -22,7 +22,7 @@ export class CollectingComponent implements OnInit, OnDestroy {
   products: Array<Product>;
 
 
-  constructor(private router: Router, readonly service: ProductService, private cartService: CartService) {
+  constructor(private router: Router, readonly databaseService: DatabaseService, private cartService: CartService) {
     this.category = this.urlToCategory(router.url);
   }
 
@@ -44,7 +44,7 @@ export class CollectingComponent implements OnInit, OnDestroy {
 
   private loadProducts() {
     console.log("Chosen category: " + this.category);
-    this.service.getProductsByCategory(this.category)
+    this.databaseService.getProductsByCategory(this.category)
       .subscribe(res => this.products = res, () => { }, () => this.populateSizeNamesForProducts());
     console.log("Products loaded.");
   }

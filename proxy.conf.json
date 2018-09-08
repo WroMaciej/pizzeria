@@ -6,5 +6,21 @@
         },
         "secure": false,
         "changeOrigin": true
+    },
+    "/api/users": {
+        "target": "http://localhost:3000",
+        "pathRewrite": {
+            "^/api": ""
+        },
+        "secure": false,
+        "changeOrigin": true
+    },
+    "/api/orders": {
+        "target": "http://localhost:3000",
+        "pathRewrite": {
+            "^/api": ""
+        },
+        "secure": false,
+        "changeOrigin": true
     }
 }
