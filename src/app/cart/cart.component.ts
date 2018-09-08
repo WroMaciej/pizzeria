@@ -44,6 +44,10 @@ export class CartComponent implements OnInit {
     console.log(this.cartTotalPrice);
   }
 
+  clearCart() {
+    this.cartService.clearCart();
+  }
+
   confirmOrder(data) {
     const confirmedOrder: Order = {
       id: undefined,
@@ -58,6 +62,7 @@ export class CartComponent implements OnInit {
     };
 
     this.orderSubscription = this.databaseService.addOrder(confirmedOrder).subscribe(res => console.log(res));
+    this.clearCart();
     console.log("Order added to DB");
 
   }
