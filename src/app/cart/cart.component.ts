@@ -15,16 +15,7 @@ import { Router } from '@angular/router';
 export class CartComponent implements OnInit {
 
   productQuantities: Array<ProductQuantity>;
-
   cartTotalPrice: number;
-
-  // firstName: string;
-  // lastName: string;
-  // mobile: string;
-  // city: string;
-  // street: string;
-  // zipCode: string;
-
   orderSubscription: Subscription;
 
   constructor(private cartService: CartService, readonly databaseService: DatabaseService, private router: Router) {
@@ -63,12 +54,10 @@ export class CartComponent implements OnInit {
       street: data.street,
       zipCode: data.zipCode
     };
-
     this.orderSubscription = this.databaseService.addOrder(confirmedOrder).subscribe(res => console.log(res));
     this.clearCart();
     console.log("Order added.");
     this.router.navigate(['/confirmation']);
-
   }
 
 }

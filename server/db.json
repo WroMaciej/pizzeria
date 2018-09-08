@@ -276,6 +276,37 @@
       "street": "rwd",
       "zipCode": "fs",
       "id": 1
+    },
+    {
+      "productQuantities": [
+        {
+          "productVariant": {
+            "product": {
+              "id": 1,
+              "category": "pizza",
+              "name": "Margherita",
+              "description": "This is a simplest pizza ever.",
+              "isActive": true,
+              "priceOfSize": [
+                18,
+                20,
+                22
+              ],
+              "icon": "/assets/img/pizza-default.png"
+            },
+            "size": 0
+          },
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 18,
+      "firstName": "",
+      "lastName": "",
+      "mobile": "",
+      "city": "",
+      "street": "",
+      "zipCode": "",
+      "id": 2
     }
   ]
 }
