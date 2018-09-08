@@ -29,7 +29,7 @@ const appRoutes: Routes = [
   { path: 'pizza', component: CollectingComponent },
   { path: 'pasta', component: CollectingComponent },
   { path: 'drink', component: CollectingComponent },
-  { path: 'confirmation', component: ConfirmationComponent }
+  { path: 'confirmation/:totalPrice', component: ConfirmationComponent }
 
 ];
 

@@ -55,9 +55,10 @@ export class CartComponent implements OnInit {
       zipCode: data.zipCode
     };
     this.orderSubscription = this.databaseService.addOrder(confirmedOrder).subscribe(res => console.log(res));
+    const orderPrice: number = this.cartTotalPrice;
     this.clearCart();
-    console.log("Order added.");
-    this.router.navigate(['/confirmation']);
+    console.log("Order added. Total price: " + orderPrice);
+    this.router.navigate(['confirmation/' + orderPrice]);
   }
 
 }
