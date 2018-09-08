@@ -1,9 +1,10 @@
 import { ProductQuantity } from '../model/product.quantity.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CartService } from '../service/cart.service';
 import { Order } from '../model/order.model';
 import { DatabaseService } from '../service/database.service';
 import { log } from 'util';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -23,11 +24,17 @@ export class CartComponent implements OnInit {
   street: string;
   zipCode: string;
 
+  orderSubscription: Subscription;
+
   constructor(private cartService: CartService, readonly databaseService: DatabaseService) {
   }
 
   ngOnInit() {
     this.loadPositions();
+  }
+
+  ngOnDestroy() {
+    this.orderSubscription.unsubscribe();
   }
 
   private loadPositions() {
@@ -50,7 +57,7 @@ export class CartComponent implements OnInit {
       zipCode: data.zipCode
     };
 
-    this.databaseService.addOrder(confirmedOrder).subscribe(res => console.log(res));
+    this.orderSubscription = this.databaseService.addOrder(confirmedOrder).subscribe(res => console.log(res));
     console.log("Order added to DB");
 
   }

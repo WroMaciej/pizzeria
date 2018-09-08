@@ -20,6 +20,7 @@ export class CollectingComponent implements OnInit, OnDestroy {
   category: Category;
   sizeNamesForProducts: Array<Array<string>> = [];
   products: Array<Product>;
+  productsSubscription: Subscription;
 
 
   constructor(private router: Router, readonly databaseService: DatabaseService, private cartService: CartService) {
@@ -28,9 +29,11 @@ export class CollectingComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadProducts();
+
   }
 
   ngOnDestroy() {
+    this.productsSubscription.unsubscribe();
   }
 
   addToCart(chosenProduct: Product, chosenSize: number) {
@@ -44,7 +47,7 @@ export class CollectingComponent implements OnInit, OnDestroy {
 
   private loadProducts() {
     console.log("Chosen category: " + this.category);
-    this.databaseService.getProductsByCategory(this.category)
+    this.productsSubscription = this.databaseService.getProductsByCategory(this.category)
       .subscribe(res => this.products = res, () => { }, () => this.populateSizeNamesForProducts());
     console.log("Products loaded.");
   }
