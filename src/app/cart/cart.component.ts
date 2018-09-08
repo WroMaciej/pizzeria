@@ -5,6 +5,7 @@ import { Order } from '../model/order.model';
 import { DatabaseService } from '../service/database.service';
 import { log } from 'util';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -17,16 +18,16 @@ export class CartComponent implements OnInit {
 
   cartTotalPrice: number;
 
-  firstName: string;
-  lastName: string;
-  mobile: string;
-  city: string;
-  street: string;
-  zipCode: string;
+  // firstName: string;
+  // lastName: string;
+  // mobile: string;
+  // city: string;
+  // street: string;
+  // zipCode: string;
 
   orderSubscription: Subscription;
 
-  constructor(private cartService: CartService, readonly databaseService: DatabaseService) {
+  constructor(private cartService: CartService, readonly databaseService: DatabaseService, private router: Router) {
   }
 
   ngOnInit() {
@@ -34,7 +35,9 @@ export class CartComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.orderSubscription.unsubscribe();
+    if (this.orderSubscription) {
+      this.orderSubscription.unsubscribe();
+    }
   }
 
   private loadPositions() {
@@ -63,7 +66,8 @@ export class CartComponent implements OnInit {
 
     this.orderSubscription = this.databaseService.addOrder(confirmedOrder).subscribe(res => console.log(res));
     this.clearCart();
-    console.log("Order added to DB");
+    console.log("Order added.");
+    this.router.navigate(['/confirmation']);
 
   }
 

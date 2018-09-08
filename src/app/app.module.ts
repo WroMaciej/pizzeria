@@ -17,7 +17,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { UserService } from './service/user.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ConfirmationComponent } from './confirmation/confirmation.component'; 
 
 
 const appRoutes: Routes = [
@@ -28,6 +29,7 @@ const appRoutes: Routes = [
   { path: 'pizza', component: CollectingComponent },
   { path: 'pasta', component: CollectingComponent },
   { path: 'drink', component: CollectingComponent },
+  { path: 'confirmation', component: ConfirmationComponent }
 
 ];
 
@@ -41,7 +43,8 @@ const appRoutes: Routes = [
     CollectingComponent,
     CartComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,

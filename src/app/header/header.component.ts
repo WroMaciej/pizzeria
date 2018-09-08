@@ -10,7 +10,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  cartTotalPrice: number;
+  cartTotalPrice: number = 0;
   priceSubscription: Subscription;
 
   constructor(private userService: UserService, private cartService: CartService) { }
