@@ -275,6 +275,91 @@
       "street": "",
       "zipCode": "",
       "id": 1
+    },
+    {
+      "productQuantities": [
+        {
+          "productVariant": {
+            "product": {
+              "id": 1,
+              "category": "pizza",
+              "name": "Margherita",
+              "description": "This is a simplest pizza ever.",
+              "isActive": true,
+              "priceOfSize": [
+                18,
+                20,
+                22
+              ],
+              "icon": "/assets/img/pizza-default.png"
+            },
+            "size": 0
+          },
+          "quantity": 2
+        },
+        {
+          "productVariant": {
+            "product": {
+              "id": 12,
+              "category": "pizza",
+              "name": "Ciao",
+              "description": "Siciliano.",
+              "isActive": true,
+              "priceOfSize": [
+                22,
+                32,
+                42
+              ],
+              "icon": "/assets/img/pizza-default.png"
+            },
+            "size": 2
+          },
+          "quantity": 1
+        },
+        {
+          "productVariant": {
+            "product": {
+              "id": 3,
+              "category": "pasta",
+              "name": "Masta Pasta",
+              "description": "Tasty pasta.",
+              "isActive": true,
+              "priceOfSize": [
+                14,
+                16
+              ],
+              "icon": "/assets/img/pasta-default.png"
+            },
+            "size": 0
+          },
+          "quantity": 1
+        },
+        {
+          "productVariant": {
+            "product": {
+              "id": 6,
+              "category": "drink",
+              "name": "Beer",
+              "description": "Cool beer",
+              "isActive": true,
+              "priceOfSize": [
+                7,
+                10
+              ],
+              "icon": "/assets/img/drink-default.png"
+            },
+            "size": 1
+          },
+          "quantity": 2
+        }
+      ],
+      "totalPrice": 112,
+      "firstName": "",
+      "mobile": "",
+      "city": "",
+      "street": "",
+      "zipCode": "",
+      "id": 2
     }
   ]
 }

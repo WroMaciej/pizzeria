@@ -24,7 +24,7 @@ export class CartComponent implements OnInit {
   zipCode: string;
 
   constructor(private cartService: CartService, readonly databaseService: DatabaseService) {
-   }
+  }
 
   ngOnInit() {
     this.loadPositions();
@@ -37,7 +37,7 @@ export class CartComponent implements OnInit {
     console.log(this.cartTotalPrice);
   }
 
-  confirmOrder(data){
+  confirmOrder(data) {
     const confirmedOrder: Order = {
       id: undefined,
       productQuantities: this.productQuantities,
@@ -49,11 +49,10 @@ export class CartComponent implements OnInit {
       street: data.street,
       zipCode: data.zipCode
     };
-    
-    //TODO save to DB
+
     this.databaseService.addOrder(confirmedOrder).subscribe(res => console.log(res));
     console.log("Order added to DB");
-    
+
   }
 
 }

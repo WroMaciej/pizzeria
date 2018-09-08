@@ -24,7 +24,7 @@
 
 
 
-  <form #address = ngForm (ngSubmit) = "confirmOrder(address.value)">
+  <form #address=ngForm (ngSubmit)="confirmOrder(address.value)">
     First name:
     input type = "text" name = "emailid" placeholder = "emailid" ngModel
     <input type="text" name="firstName" placeholder="firstName" ngModel><br>
@@ -38,18 +38,18 @@
     <input type="text" name="street" placeholder="street" ngModel><br>
     Zip-Code:
     <input type="text" name="zipCode" placeholder="zipCode" ngModel><br>
-  
 
-  <div class="order">
-    <div class="order inner">
-      <div class="product buy-text">
-        TOTAL PRICE: {{cartTotalPrice | currency: 'EUR'}}
+
+    <div class="order">
+      <div class="order inner">
+        <div class="product buy-text">
+          TOTAL PRICE: {{cartTotalPrice | currency: 'EUR'}}
+        </div>
+
+        <button type="submit" class="product button clickable">ORDER</button>
       </div>
-
-      <button type = "submit" class="product button clickable">ORDER</button>
     </div>
-  </div>
 
-</form>
+  </form>
 
 </div>
