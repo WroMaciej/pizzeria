@@ -27,9 +27,9 @@
 
 
     <div class="login-container">
-      <form action="/action_page.php">
-        <input type="text" placeholder="Username" name="username">
-        <input type="text" placeholder="Password" name="psw">
+      <form #userData=ngForm (ngSubmit)="login(userData.value)">
+        <input type="text" placeholder="Username" name="username" ngModel>
+        <input type="text" placeholder="Password" name="password" ngModel>
         <button type="submit">Login</button>
       </form>
     </div>

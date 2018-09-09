@@ -1,6 +1,6 @@
 export interface User {
     id: number;
-    login: string;
+    username: string;
     password: string;
     isAdmin: boolean;
 }

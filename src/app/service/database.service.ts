@@ -4,6 +4,7 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../model/product.model';
 import { Category } from '../model/category.model';
+import { User } from '../model/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,12 @@ export class DatabaseService {
   deleteProduct(id: number): Observable<void> {
     return this.http.delete<void>(`/api/products/${id}`);
   }
+
+  getUserByLoginAndPassword(login: string, password: string): Observable<User> {
+    const parameters: HttpParams = new HttpParams().set('login', login).append('password', password);
+    return this.http.get<User>('/api/users/', { params: parameters });
+  }
+
 
   categoryToString(category: Category): string {
     let categoryName: string = category;
