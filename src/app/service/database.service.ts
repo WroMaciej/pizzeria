@@ -18,9 +18,9 @@ export class DatabaseService {
     return this.http.get<Product[]>('/api/products');
   }
 
-  getProductsByCategory(category: Category): Observable<Product[]> {
+  getActiveProductsByCategory(category: Category): Observable<Product[]> {
     const categoryName: string = this.categoryToString(category);
-    const parameters: HttpParams = new HttpParams().set('category', categoryName);
+    const parameters: HttpParams = new HttpParams().set('category', categoryName).append('isActive', "true");
     return this.http.get<Product[]>('/api/products/', { params: parameters });
   }
 
@@ -40,7 +40,6 @@ export class DatabaseService {
     const parameters: HttpParams = new HttpParams().set('username', username).append('password', password);
     return this.http.get<User>('/api/users/', { params: parameters });
   }
-
 
   categoryToString(category: Category): string {
     let categoryName: string = category;

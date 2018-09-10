@@ -47,7 +47,7 @@ export class CollectingComponent implements OnInit, OnDestroy {
 
   private loadProducts() {
     console.log("Chosen category: " + this.category);
-    this.productsSubscription = this.databaseService.getProductsByCategory(this.category)
+    this.productsSubscription = this.databaseService.getActiveProductsByCategory(this.category)
       .subscribe(res => this.products = res, () => { }, () => this.populateSizeNamesForProducts());
     console.log("Products loaded.");
   }
