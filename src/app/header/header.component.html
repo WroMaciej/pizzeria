@@ -25,8 +25,11 @@
     <div>{{cartTotalPrice | currency: 'EUR'}}</div>
     <a routerLink="cart">CART</a>
 
-
-    <div class="login-container">
+    <div *ngIf="(user)">
+      <div>Login: {{user.username}}</div>
+      <button (click)="logout()">Logout</button>
+    </div>
+    <div *ngIf="(!user)" class="login-container">
       <form #userData=ngForm (ngSubmit)="login(userData.value)">
         <input type="text" placeholder="Username" name="username" ngModel>
         <input type="text" placeholder="Password" name="password" ngModel>
