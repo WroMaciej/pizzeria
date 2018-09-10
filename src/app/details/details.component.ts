@@ -1,4 +1,8 @@
+import { DatabaseService } from './../service/database.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Product } from '../model/product.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-details',
@@ -6,10 +10,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
+  productId: number;
+  product: Product;
+  productSubscription: Subscription;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private databaseService: DatabaseService) { }
 
   ngOnInit() {
+    this.productId = this.route.snapshot.params.productId;
+    console.log("Loading details of product ID: "+ this.productId);
+    this.loadProduct(this.productId);
   }
+
+  private loadProduct(productId: number){
+    this.productSubscription = this.databaseService.getProduct(productId).subscribe((product) => this.product = product);
+  }
+
+  private changeDetails(newData){
+    //TODO
+  }
+
+
 
 }

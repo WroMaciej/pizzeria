@@ -49,6 +49,10 @@ export class CollectingComponent implements OnInit, OnDestroy {
     }
   }
 
+  goToDetails(productId: number){
+    this.router.navigate(['details/' + productId]);
+  }
+
   addToCart(chosenProduct: Product, chosenSize: number) {
     const productVariant: ProductVariant = {
       product: chosenProduct,

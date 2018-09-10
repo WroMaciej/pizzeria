@@ -1,3 +1,26 @@
-<p>
-  details works!
-</p>
+<div class="collecting-pattern"> 
+        <h3>Producy details:</h3>
+        <form #details=ngForm (ngSubmit)="changeDetails(details.value)">
+          <b class="address-text">Name:</b>
+          <input class="address-input" type="text" name="name" value = {{product.name}} ngModel><br>
+
+          <b class="address-text">Description:</b>
+          <input class="address-input" type="text" name="description" value = {{product.description}} ngModel><br>
+
+          <b class="address-text">Is active:</b>
+          True
+          <input class="address-input" type="radio" name="isActive" value = "true" ngModel><br>
+          False
+          <input class="address-input" type="radio" name="isActive" value = "false" ngModel><br>
+
+          <b class="address-text">Icon:</b>
+          <input class="address-input" type="text" name="icon" value = {{product.icon}} ngModel><br>
+          
+    
+          <div class="order">
+              <button type="submit" class="product button clickable">SAVE CHANGES</button>
+              <button type="submit" class="product button clickable">CANCEL</button>
+          </div>
+    
+        </form>
+</div>

@@ -30,8 +30,8 @@ const appRoutes: Routes = [
   { path: 'pizza', component: CollectingComponent },
   { path: 'pasta', component: CollectingComponent },
   { path: 'drink', component: CollectingComponent },
-  { path: 'confirmation/:totalPrice', component: ConfirmationComponent }
-
+  { path: 'confirmation/:totalPrice', component: ConfirmationComponent },
+  { path: 'details/:productId', component: DetailsComponent}
 ];
 
 @NgModule({
