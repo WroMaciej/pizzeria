@@ -36,8 +36,8 @@ export class DatabaseService {
     return this.http.delete<void>(`/api/products/${id}`);
   }
 
-  getUserByLoginAndPassword(login: string, password: string): Observable<User> {
-    const parameters: HttpParams = new HttpParams().set('login', login).append('password', password);
+  getUserByUsernameAndPassword(username: string, password: string): Observable<User> {
+    const parameters: HttpParams = new HttpParams().set('username', username).append('password', password);
     return this.http.get<User>('/api/users/', { params: parameters });
   }
 

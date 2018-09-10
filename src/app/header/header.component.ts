@@ -15,8 +15,6 @@ export class HeaderComponent implements OnInit {
   cartTotalPrice: number = 0;
   priceSubscription: Subscription;
   loginSubscription: Subscription;
-  username: string;
-  password: string;
   lastLogin: User;
 
   constructor(private userService: UserService, private cartService: CartService, private databaseService: DatabaseService) { }
@@ -35,15 +33,16 @@ export class HeaderComponent implements OnInit {
   }
 
   private authenticateUser(user: User) {
-    console.log("Authenticating of user: " + user.username);
-    if (user  && user.id) {
-      console.log("User " + user.username + "authenticated.");
+    if (user && user.id) {
+      console.log("User " + user.username + " authenticated.");
       this.showUserData();
-      if (user.isAdmin){
-        console.log("User " + user.username + "has admin privileges.");
+      if (user.isAdmin) {
+        console.log("User " + user.username + " has admin privileges.");
+      } else {
+        console.log("User " + user.username + " is a regular customer.");
       }
     }
-    else{
+    else {
       console.log("Wrong username or password.");
     }
 
@@ -51,16 +50,14 @@ export class HeaderComponent implements OnInit {
 
 
   login(data) {
-    
-    const userData: User = {
-      id: undefined,
-      isAdmin: undefined,
-      username: data.username,
-      password: data.password
-    };
-    this.loginSubscription =  this.databaseService
-      .getUserByLoginAndPassword(userData.username, userData.password)
-      .subscribe(user => this.lastLogin = user, () => {}, () => this.authenticateUser(this.lastLogin));
+    console.log("Authenticating of user: " + data.username);
+    this.loginSubscription = this.databaseService
+      .getUserByUsernameAndPassword(data.username, data.password)
+      .subscribe(user => this.lastLogin = user, () => { }
+        , () => {
+          this.lastLogin = this.lastLogin[0];
+          this.authenticateUser(this.lastLogin);
+        });
   }
 
 }
