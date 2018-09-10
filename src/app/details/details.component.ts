@@ -1,5 +1,5 @@
 import { DatabaseService } from './../service/database.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../model/product.model';
 import { Subscription } from 'rxjs';
@@ -14,7 +14,13 @@ export class DetailsComponent implements OnInit {
   product: Product;
   productSubscription: Subscription;
 
-  constructor(private route: ActivatedRoute, private databaseService: DatabaseService) { }
+  constructor(private route: ActivatedRoute, private databaseService: DatabaseService) {
+    
+   }
+
+   ngOnDestroy(){
+     this.productSubscription.unsubscribe();
+   }
 
   ngOnInit() {
     this.productId = this.route.snapshot.params.productId;

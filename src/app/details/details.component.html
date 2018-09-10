@@ -1,20 +1,20 @@
 <div class="collecting-pattern"> 
         <h3>Producy details:</h3>
         <form #details=ngForm (ngSubmit)="changeDetails(details.value)">
-          <b class="address-text">Name:</b>
-          <input class="address-input" type="text" name="name" value = {{product.name}} ngModel><br>
+          <div class="details-text">Name:</div>
+          <input class="details-input" type="text" name = "name" value = {{product?.name}} ngModel><br>
 
-          <b class="address-text">Description:</b>
-          <input class="address-input" type="text" name="description" value = {{product.description}} ngModel><br>
+          <div class="details-text">Description:</div>
+          <textarea class="details-input description" type="text" name="description" value = {{product?.description}} ngModel></textarea><br>
 
-          <b class="address-text">Is active:</b>
+          <div class="details-text">Is active:</div>
           True
-          <input class="address-input" type="radio" name="isActive" value = "true" ngModel><br>
+          <input type="radio" name="isActive" value ="true" [checked] = "product?.isActive == true" ngModel>
           False
-          <input class="address-input" type="radio" name="isActive" value = "false" ngModel><br>
+          <input  type="radio" name="isActive" value ="false" [checked] = "product?.isActive == false"  ngModel><br>
 
-          <b class="address-text">Icon:</b>
-          <input class="address-input" type="text" name="icon" value = {{product.icon}} ngModel><br>
+          <div class="details-text">Icon:</div>
+          <input class="details-input" type="text" name="icon" value = {{product?.icon}} ngModel><br>
           
     
           <div class="order">
