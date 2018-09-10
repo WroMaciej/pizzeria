@@ -1,5 +1,5 @@
 import { DatabaseService } from './database.service';
-import { Injectable, OnDestroy} from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { ProductQuantity } from '../model/product.quantity.model';
 import { User } from '../model/user.model';
 import { Subscription, Observable, Subject, BehaviorSubject } from 'rxjs';
@@ -9,12 +9,13 @@ export class UserService {
 
     currentUser: User;
     loginSubject: BehaviorSubject<User> = new BehaviorSubject<User>(undefined); //Subject<User> = new Subject<User>(); //
+    isAdminSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     loginSubscription: Subscription;
 
     constructor(private databaseService: DatabaseService) {
     }
 
-    ngOnDestroy(){
+    ngOnDestroy() {
         this.loginSubscription.unsubscribe();
     }
 
@@ -29,8 +30,10 @@ export class UserService {
                 });
     }
 
-    logout(){
+    logout() {
         this.loginSubject.next(undefined);
+        this.isAdminSubject.next(false);
+        this.currentUser = undefined;
     }
 
     private authenticateUser(user: User) {
@@ -42,6 +45,7 @@ export class UserService {
                 console.log("User " + user.username + " is a regular customer.");
             }
             this.loginSubject.next(user);
+            this.isAdminSubject.next(user.isAdmin);
         }
         else {
             console.log("Wrong username or password.");
@@ -50,6 +54,10 @@ export class UserService {
 
     getLoggedUser(): Observable<User> {
         return this.loginSubject.asObservable();
+    }
+
+    isAdminLogged(): Observable<boolean> {
+        return this.isAdminSubject.asObservable();
     }
 
 

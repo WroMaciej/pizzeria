@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Category } from '../model/category.model';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, finalize } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { Product } from '../model/product.model';
 import { DatabaseService } from '../service/database.service';
@@ -23,8 +23,8 @@ export class CollectingComponent implements OnInit, OnDestroy {
   sizeNamesForProducts: Array<Array<string>> = [];
   products: Array<Product>;
   productsSubscription: Subscription;
-  userSubscription: Subscription;
-  loggedUser: User;
+  isAdminSubscription: Subscription;
+  isAdminLogged: boolean = false;
 
   constructor(
     private router: Router,
@@ -36,16 +36,15 @@ export class CollectingComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log("Chosen category: " + this.category);
-    this.loggedUser = this.userService.loginSubject.getValue();
-    this.loadProducts();
+    this.isAdminSubscription = this.userService.isAdminLogged().pipe(finalize(() => this.loadProducts())).subscribe(isAdmin => this.isAdminLogged = isAdmin);
   }
 
   ngOnDestroy() {
     if (this.productsSubscription) {
       this.productsSubscription.unsubscribe();
     }
-    if (this.userSubscription){
-      this.userSubscription.unsubscribe();
+    if (this.isAdminSubscription){
+      this.isAdminSubscription.unsubscribe();
     }
   }
 
@@ -61,7 +60,7 @@ export class CollectingComponent implements OnInit, OnDestroy {
   private loadProducts() {
     console.log("Loading products...");
 
-    if (this.loggedUser && this.loggedUser.isAdmin == true) {
+    if (this.isAdminLogged && this.isAdminLogged == true) {
       this.productsSubscription = this.databaseService.getAllProductsByCategory(this.category)
         .subscribe(res => this.products = res, () => { }, () => this.populateSizeNamesForProducts());
       console.log("Products loaded for admin.");
