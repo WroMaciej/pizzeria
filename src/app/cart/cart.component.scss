@@ -10,7 +10,8 @@
 
 .order {
     display: block;
-    background-color: darkorchid;
+    margin-left: auto;
+    margin-right: auto;
     height: 100px;
     width: 100%;
 }
@@ -19,8 +20,7 @@
     display: block;
     background-color: yellow;
     height: 80px;
-    width: 100px;
-    margin-left: 800px;
+    width: 150px;
 }
 
 .product {
@@ -79,11 +79,10 @@
 }
 
 .product.button {
-    display: inline-block;
-    align-content: center;
     vertical-align: top;
     margin-top: 1px;
-    margin-left: 10px;
+    margin-left: auto;
+    margin-right: auto;
     width: 65px;
     height: 75px;
     border-style: none;
@@ -101,7 +100,18 @@
     border-radius: 5px;
 }
 
-.product.button.clickable:hover{
+.product.button.clickable:hover {
     cursor: pointer;
     background-color: greenyellow;
+}
+
+.address-input {
+    display: inline-block;
+    margin-left: 0px;
+}
+
+.address-text {
+    display: inline-block;
+    margin-left: 100px;
+    width: 150px;
 }

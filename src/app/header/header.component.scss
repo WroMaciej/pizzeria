@@ -1,6 +1,7 @@
 .header-title {
     display : block;
     text-align: center;
+    font-size: 25px;
     height: 90px;
     background-color: orange;
     background-image: url('../../assets/img/header-background.jpg');
@@ -10,6 +11,7 @@
 
 
 .logo-handler{
+  margin-top: 5px;
     display: inline-block;
     width: auto;
 }
