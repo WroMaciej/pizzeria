@@ -3,15 +3,10 @@
     {
       "id": 1,
       "category": "pizza",
-      "name": "Margherita",
-      "description": "This is a simplest pizza ever.",
-      "isActive": true,
-      "priceOfSize": [
-        18,
-        20,
-        22
-      ],
-      "icon": "/assets/img/pizza-default.png"
+      "name": "Margherita EDITED",
+      "description": "",
+      "isActive": "",
+      "icon": ""
     },
     {
       "id": 2,

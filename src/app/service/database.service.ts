@@ -36,7 +36,7 @@ export class DatabaseService {
   }
 
   updateProduct(productToUpdate: Product): Observable<Product> {
-    return this.http.put<Product>('/api/products', productToUpdate);
+    return this.http.put<Product>(`/api/products/${productToUpdate.id}`, productToUpdate);
   }
 
   addOrder(orderToAdd: Order): Observable<Order> {
