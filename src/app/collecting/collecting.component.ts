@@ -24,7 +24,7 @@ export class CollectingComponent implements OnInit, OnDestroy {
   products: Array<Product>;
   productsSubscription: Subscription;
   isAdminSubscription: Subscription;
-  isAdminLogged: boolean = false;
+  isAdminLogged = false;
 
   constructor(
     private router: Router,
@@ -37,6 +37,7 @@ export class CollectingComponent implements OnInit, OnDestroy {
   ngOnInit() {
     console.log("Chosen category: " + this.category);
     this.isAdminSubscription = this.userService.isAdminLogged().pipe(finalize(() => this.loadProducts())).subscribe(isAdmin => this.isAdminLogged = isAdmin);
+    this.loadProducts();
   }
 
   ngOnDestroy() {

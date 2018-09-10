@@ -1,16 +1,33 @@
 <div class="collecting-pattern">
   <h2>Actually available {{category}}s:</h2>
 
-  <div class="product" *ngFor="let product of products; index as productIndex">
-    <img class="product icon" [src]="product.icon">
-    <div class="product text">
-      <div class="product text name">{{product.name}}</div>
-      <div class="product text description">{{product.description}}</div>
+  <div *ngIf="(!isAdminLogged)">
+    <div class="product" *ngFor="let product of products; index as productIndex">
+      <img class="product icon" [src]="product.icon">
+      <div class="product text">
+        <div class="product text name">{{product.name}}</div>
+        <div class="product text description">{{product.description}}</div>
+      </div>
+      <div class="product buy-text">Click price to buy</div>
+      <div class="product button" *ngFor="let price of product.priceOfSize; index as size">
+        <div class="product button description">{{sizeNamesForProducts[productIndex][size]}}</div>
+        <div class="product button clickable" (click)="addToCart(product, size)">{{price | currency: 'EUR'}}</div>
+      </div>
     </div>
-    <div class="product buy-text">Click price to buy</div>
-    <div class="product button" *ngFor="let price of product.priceOfSize; index as size">
-      <div class="product button description">{{sizeNamesForProducts[productIndex][size]}}</div>
-      <div *ngIf="(!isAdminLogged)" class="product button clickable" (click)="addToCart(product, size)">{{price | currency: 'EUR'}}</div>
+  </div>
+
+  <div *ngIf="(isAdminLogged)">
+    <div class="admin product" *ngFor="let product of products; index as productIndex">
+      <img class="product icon" [src]="product.icon">
+      <div class="product text">
+        <div class="product text name">{{product.name}}</div>
+        <div class="product text description">{{product.description}}</div>
+      </div>
+      <div class="product buy-text">Click to edit</div>
+      <div class="product button" *ngFor="let price of product.priceOfSize; index as size">
+        <div class="product button description">{{sizeNamesForProducts[productIndex][size]}}</div>
+        <div class="">{{price | currency: 'EUR'}}</div>
+      </div>
     </div>
   </div>
 
