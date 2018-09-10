@@ -32,9 +32,11 @@ export class DatabaseService {
   }
 
   getProduct(id: number): Observable<Product> {
-    const parameters: HttpParams = new HttpParams().set('id', id.toString());
-    //return this.http.get<Product>('/api/products/', { params: parameters }).pipe(first());
     return this.http.get<Product>(`/api/products/${id}`);
+  }
+
+  updateProduct(productToUpdate: Product): Observable<Product> {
+    return this.http.put<Product>('/api/products', productToUpdate);
   }
 
   addOrder(orderToAdd: Order): Observable<Order> {

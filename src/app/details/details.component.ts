@@ -13,6 +13,7 @@ export class DetailsComponent implements OnInit {
   productId: number;
   product: Product;
   productSubscription: Subscription;
+  updateSubscription: Subscription;
 
   constructor(private route: ActivatedRoute, private databaseService: DatabaseService) {
     
@@ -20,6 +21,7 @@ export class DetailsComponent implements OnInit {
 
    ngOnDestroy(){
      this.productSubscription.unsubscribe();
+     this.updateSubscription.unsubscribe();
    }
 
   ngOnInit() {
@@ -33,7 +35,19 @@ export class DetailsComponent implements OnInit {
   }
 
   private changeDetails(newData){
-    //TODO
+    console.log("Sending data from form: " + newData);
+    const updatedProduct: Product = {
+      id: this.product.id,
+      category: this.product.category,
+      name: newData.name,
+      description: newData.description,
+      isActive: newData.isActive,
+      priceOfSize: undefined,
+      icon: newData.icon
+    };
+    console.log("Trying to update product as: " + updatedProduct);
+
+    this.updateSubscription = this.databaseService.updateProduct(updatedProduct).subscribe();
   }
 
 
