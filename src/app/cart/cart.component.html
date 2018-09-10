@@ -1,5 +1,5 @@
 <div class="collecting-pattern">
-  <div>Products in cart:</div>
+  <h2>Products in cart:</h2>
 
   <div class="product" *ngFor="let productQuantity of productQuantities; index as productQuantityIndex">
     <img class="product icon" [src]="productQuantity.productVariant.product.icon">
@@ -23,7 +23,7 @@
   </div>
 
 
-
+  <h3>Delivery address:</h3>
   <form #address=ngForm (ngSubmit)="confirmOrder(address.value)">
     First name:
     <input type="text" name="firstName" placeholder="First name" ngModel><br>
@@ -37,7 +37,6 @@
     <input type="text" name="street" placeholder="Street" ngModel><br>
     Zip-Code:
     <input type="text" name="zipCode" placeholder="Zip-Code" ngModel><br>
-
 
     <div class="order">
       <div class="order inner">

@@ -60,7 +60,7 @@ export class CartService {
         this.totalPrice.next(0);
     }
 
-    private areProductVariantsEqual(variant1: ProductVariant, variant2: ProductVariant): boolean{
+    private areProductVariantsEqual(variant1: ProductVariant, variant2: ProductVariant): boolean {
         return (variant1.product.id == variant2.product.id && variant1.size == variant2.size);
     }
 
@@ -81,7 +81,7 @@ export class CartService {
         return true;
     }
 
-    
+
 
 }
 
