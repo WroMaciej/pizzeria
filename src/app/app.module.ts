@@ -18,7 +18,8 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { UserService } from './service/user.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ConfirmationComponent } from './confirmation/confirmation.component'; 
+import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { DetailsComponent } from './details/details.component'; 
 
 
 const appRoutes: Routes = [
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
     CartComponent,
     HomeComponent,
     AboutComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
