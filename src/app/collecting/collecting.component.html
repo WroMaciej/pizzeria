@@ -17,7 +17,7 @@
   </div>
 
   <div *ngIf="(isAdminLogged)">
-    <div class="admin product" (click)="goToDetails(productIndex)" *ngFor="let product of products; index as productIndex">
+    <div class="admin product" (click)="goToDetails(product.id)" *ngFor="let product of products; index as productIndex">
       <img class="product icon" [src]="product.icon">
       <div class="product text">
         <div class="product text name">{{product.name}}</div>

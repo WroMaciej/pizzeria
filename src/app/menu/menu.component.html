@@ -5,7 +5,7 @@
 
   <div class="categories">
 
-    <div class="category" [routerLink]="[category]" *ngFor="let category of categories">{{category}}</div>
+    <div class="category" [routerLink]="[category]" *ngFor="let category of categories">{{category | uppercase}}</div>
 
   </div>
 
