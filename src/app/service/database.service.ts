@@ -24,6 +24,12 @@ export class DatabaseService {
     return this.http.get<Product[]>('/api/products/', { params: parameters });
   }
 
+  getAllProductsByCategory(category: Category): Observable<Product[]> {
+    const categoryName: string = this.categoryToString(category);
+    const parameters: HttpParams = new HttpParams().set('category', categoryName);
+    return this.http.get<Product[]>('/api/products/', { params: parameters });
+  }
+
   getProduct(id: number): Observable<Product> {
     return this.http.get<Product>(`/api/products/${id}`);
   }

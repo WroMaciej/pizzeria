@@ -14,12 +14,11 @@ export class HeaderComponent implements OnInit {
 
   cartTotalPrice: number = 0;
   priceSubscription: Subscription;
-  //loginSubscription: Subscription;
   userSubscription: Subscription;
   user: User;
   isLogged: boolean;
 
-  constructor(private userService: UserService, private cartService: CartService, private databaseService: DatabaseService) { }
+  constructor(private userService: UserService, private cartService: CartService) { }
 
   ngOnInit() {
     this.priceSubscription = this.cartService.getTotalPrice().subscribe(totalPrice => this.cartTotalPrice = totalPrice);
@@ -30,16 +29,14 @@ export class HeaderComponent implements OnInit {
     this.userSubscription.unsubscribe();
   }
 
-
-
-  login(userData){
+  login(userData) {
     this.userService.login(userData);
-    this.userSubscription = this.userService.getLoggedUser().subscribe(user => this.user = user);    
+    this.userSubscription = this.userService.getLoggedUser().subscribe(user => this.user = user);
   }
 
-  logout(){
+  logout() {
     console.log("Logging out...");
     this.userService.logout();
   }
-  
+
 }

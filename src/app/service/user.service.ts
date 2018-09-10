@@ -2,13 +2,13 @@ import { DatabaseService } from './database.service';
 import { Injectable, OnDestroy} from '@angular/core';
 import { ProductQuantity } from '../model/product.quantity.model';
 import { User } from '../model/user.model';
-import { Subscription, Observable, Subject } from 'rxjs';
+import { Subscription, Observable, Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class UserService {
 
     currentUser: User;
-    loginSubject: Subject<User> = new Subject<User>();
+    loginSubject: BehaviorSubject<User> = new BehaviorSubject<User>(undefined); //Subject<User> = new Subject<User>(); //
     loginSubscription: Subscription;
 
     constructor(private databaseService: DatabaseService) {

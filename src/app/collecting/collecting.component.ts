@@ -9,6 +9,8 @@ import { Product } from '../model/product.model';
 import { DatabaseService } from '../service/database.service';
 import { ProductQuantity } from '../model/product.quantity.model'
 import { ProductVariant } from '../model/product.variant.model';
+import { UserService } from '../service/user.service';
+import { User } from '../model/user.model';
 
 @Component({
   selector: 'app-collecting',
@@ -21,19 +23,30 @@ export class CollectingComponent implements OnInit, OnDestroy {
   sizeNamesForProducts: Array<Array<string>> = [];
   products: Array<Product>;
   productsSubscription: Subscription;
+  userSubscription: Subscription;
+  loggedUser: User;
 
-
-  constructor(private router: Router, readonly databaseService: DatabaseService, private cartService: CartService) {
+  constructor(
+    private router: Router,
+    readonly databaseService: DatabaseService,
+    private cartService: CartService,
+    private userService: UserService) {
     this.category = this.urlToCategory(router.url);
   }
 
   ngOnInit() {
+    console.log("Chosen category: " + this.category);
+    this.loggedUser = this.userService.loginSubject.getValue();
     this.loadProducts();
-
   }
 
   ngOnDestroy() {
-    this.productsSubscription.unsubscribe();
+    if (this.productsSubscription) {
+      this.productsSubscription.unsubscribe();
+    }
+    if (this.userSubscription){
+      this.userSubscription.unsubscribe();
+    }
   }
 
   addToCart(chosenProduct: Product, chosenSize: number) {
@@ -46,10 +59,17 @@ export class CollectingComponent implements OnInit, OnDestroy {
   }
 
   private loadProducts() {
-    console.log("Chosen category: " + this.category);
-    this.productsSubscription = this.databaseService.getActiveProductsByCategory(this.category)
-      .subscribe(res => this.products = res, () => { }, () => this.populateSizeNamesForProducts());
-    console.log("Products loaded.");
+    console.log("Loading products...");
+
+    if (this.loggedUser && this.loggedUser.isAdmin == true) {
+      this.productsSubscription = this.databaseService.getAllProductsByCategory(this.category)
+        .subscribe(res => this.products = res, () => { }, () => this.populateSizeNamesForProducts());
+      console.log("Products loaded for admin.");
+    } else {
+      this.productsSubscription = this.databaseService.getActiveProductsByCategory(this.category)
+        .subscribe(res => this.products = res, () => { }, () => this.populateSizeNamesForProducts());
+      console.log("Products loaded for customer.");
+    }
   }
 
   private sizeNames(category: Category, sizesAvailable: number): Array<string> {
@@ -80,8 +100,6 @@ export class CollectingComponent implements OnInit, OnDestroy {
       this.sizeNamesForProducts.push(this.sizeNames(this.products[i].category, this.products[i].priceOfSize.length));
     }
   }
-
-
 
   private urlToCategory(url: string): Category {
     let categoryName: string = url.slice(1, url.length);
