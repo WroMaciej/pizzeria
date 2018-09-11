@@ -42,13 +42,15 @@
     
 
     <div formArrayName="priceOfSize">
-      <h3>Price of size</h3> <button (click)="addSize()">Add size</button>
+      <h3>Price of size</h3>
+      <button (click)="addSize()">Add size</button>
+      <button (click)="removeSize()">Remove size</button>
 
       <div *ngFor="let size of priceOfSize.controls; let i=index">
         <!-- The repeated alias template -->
         <label>
           Price of size {{i}}:
-          <input type="text" [formControlName]="i">
+          <input type="number" [formControlName]="i">
         </label>
       </div>
     </div>

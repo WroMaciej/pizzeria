@@ -6,6 +6,11 @@
       "name": "",
       "description": "",
       "isActive": "",
+      "priceOfSize": [
+        14,
+        16,
+        18
+      ],
       "icon": "/assets/img/pizza-default.png"
     },
     {
@@ -14,6 +19,11 @@
       "name": "Hawai NEW",
       "description": "Brand new hawaii pizza",
       "isActive": "true",
+      "priceOfSize": [
+        14,
+        16,
+        18
+      ],
       "icon": ""
     },
     {
@@ -34,6 +44,11 @@
       "name": "Hidden pizza",
       "description": "Can`t touch this.",
       "isActive": false,
+      "priceOfSize": [
+        14,
+        16,
+        18
+      ],
       "icon": "/assets/img/pizza-default.png"
     },
     {
@@ -55,7 +70,8 @@
       "isActive": true,
       "priceOfSize": [
         7,
-        10
+        10,
+        ""
       ],
       "icon": "/assets/img/drink-default.png"
     },
@@ -130,9 +146,9 @@
       "description": "Siciliano.",
       "isActive": true,
       "priceOfSize": [
-        22,
-        32,
-        42
+        25,
+        30,
+        35
       ],
       "icon": "/assets/img/pizza-default.png"
     },
@@ -143,9 +159,9 @@
       "description": "Vista.",
       "isActive": true,
       "priceOfSize": [
-        13,
-        16,
-        18
+        18,
+        19,
+        21
       ],
       "icon": "/assets/img/pizza-default.png"
     },
@@ -195,9 +211,12 @@
       "description": "Try to eat that!",
       "isActive": true,
       "priceOfSize": [
+        "",
         65,
         68,
-        72
+        72,
+        "",
+        ""
       ],
       "icon": "/assets/img/pizza-default.png"
     },

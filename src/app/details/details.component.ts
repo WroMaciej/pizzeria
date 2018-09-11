@@ -10,6 +10,7 @@ import { FormBuilder, Validators, FormArray, FormGroup } from '@angular/forms';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
+
 export class DetailsComponent implements OnInit {
   productId: number;
   product: Product;
@@ -23,11 +24,10 @@ export class DetailsComponent implements OnInit {
     icon: [''],
     priceOfSize: this.fb.array([
       this.fb.control('')
-    ])    
+    ])
   });
 
   
-
   constructor(private route: ActivatedRoute, private databaseService: DatabaseService, private fb: FormBuilder) {
     
    }
@@ -51,11 +51,11 @@ export class DetailsComponent implements OnInit {
   }
 
   updateDetails() {
+    this.resetSizes();
     this.detailsForm.patchValue({
       name: this.product.name,
       description: this.product.description,
       icon: this.product.icon,
-      priceOfSize: ['1','2','3'],
       isActive: this.product.isActive
     });
   }
@@ -72,7 +72,7 @@ export class DetailsComponent implements OnInit {
       name: this.detailsForm.controls['name'].value,
       description: this.detailsForm.controls['description'].value,
       isActive: this.detailsForm.controls['isActive'].value,
-      priceOfSize: undefined,
+      priceOfSize: this.priceOfSize.value,
       icon: this.detailsForm.controls['icon'].value,
     };
     this.updateSubscription = this.databaseService.updateProduct(updatedProduct).subscribe();
@@ -82,8 +82,18 @@ export class DetailsComponent implements OnInit {
     return this.detailsForm.get('priceOfSize') as FormArray;
   }
 
+
   private addSize() {
     this.priceOfSize.push(this.fb.control(''));
+  }
+
+  private removeSize() {
+    this.priceOfSize.removeAt(this.priceOfSize.length-1);
+  }
+
+  private resetSizes() {
+    this.priceOfSize.controls = [];
+    this.product.priceOfSize.forEach(p => this.priceOfSize.push(this.fb.control(p)));
   }
 
 
