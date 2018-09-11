@@ -3,23 +3,18 @@
     {
       "id": 1,
       "category": "pizza",
-      "name": "Margherita EDITED",
+      "name": "",
       "description": "",
       "isActive": "",
-      "icon": ""
+      "icon": "/assets/img/pizza-default.png"
     },
     {
       "id": 2,
       "category": "pizza",
-      "name": "Hawaii",
-      "description": "Ananasses everywhere!",
-      "isActive": true,
-      "priceOfSize": [
-        22,
-        25,
-        27
-      ],
-      "icon": "/assets/img/pizza-default.png"
+      "name": "Hawai NEW",
+      "description": "Brand new hawaii pizza",
+      "isActive": "true",
+      "icon": ""
     },
     {
       "id": 3,

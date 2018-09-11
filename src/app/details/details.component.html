@@ -2,19 +2,19 @@
   <h3>Product details:</h3>
   <form #details=ngForm (ngSubmit)="changeDetails(details.value)">
     <div class="details-text">Name:</div>
-    <input class="details-input" type="text" name="name" value={{product?.name}} ngModel><br>
+    <input class="details-input" type="text" name="name" value={{product.name}} ngModel><br>
 
     <div class="details-text">Description:</div>
-    <textarea class="details-input description" type="text" name="description" value={{product?.description}} ngModel></textarea><br>
+    <textarea class="details-input description" type="text" name="description" value={{product.description}} ngModel></textarea><br>
 
     <div class="details-text">Is active:</div>
     True
-    <input type="radio" name="isActive" value="true" [checked]="product?.isActive == true" ngModel>
+    <input type="radio" name="isActive" value="true" [checked]="product.isActive == true" ngModel>
     False
-    <input type="radio" name="isActive" value="false" [checked]="product?.isActive == false" ngModel><br>
+    <input type="radio" name="isActive" value="false" [checked]="product.isActive == false" ngModel><br>
 
     <div class="details-text">Icon:</div>
-    <input class="details-input" type="text" name="icon" value={{product?.icon}} ngModel><br>
+    <input class="details-input" type="text" name="icon" value={{product.icon}} ngModel><br>
 
 
     <div class="order">
