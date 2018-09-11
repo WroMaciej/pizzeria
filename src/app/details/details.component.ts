@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../model/product.model';
 import { Subscription } from 'rxjs';
+import { FormBuilder, Validators, FormArray, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-details',
@@ -15,41 +16,75 @@ export class DetailsComponent implements OnInit {
   productSubscription: Subscription;
   updateSubscription: Subscription;
 
-  constructor(private route: ActivatedRoute, private databaseService: DatabaseService) {
+  detailsForm  = this.fb.group({
+    name: ['', Validators.required],
+    description: ['', Validators.required],
+    isActive: [''],
+    icon: [''],
+    priceOfSize: this.fb.array([
+      this.fb.control('')
+    ])    
+  });
+
+  
+
+  constructor(private route: ActivatedRoute, private databaseService: DatabaseService, private fb: FormBuilder) {
     
    }
 
    ngOnDestroy(){
      this.productSubscription.unsubscribe();
      this.updateSubscription.unsubscribe();
+
+     
    }
 
   ngOnInit() {
     this.productId = this.route.snapshot.params.productId;
     console.log("Loading details of product ID: "+ this.productId);
-    this.loadProduct(this.productId);
+    this.getProductFromDatabase(this.productId);
+    
   }
 
-  private loadProduct(productId: number){
-    this.productSubscription = this.databaseService.getProduct(productId).subscribe((product) => this.product = product);
+  private getProductFromDatabase(productId: number){
+    this.productSubscription = this.databaseService.getProduct(productId).subscribe((product) => this.product = product, () => {}, () => this.updateDetails());
   }
 
-  private changeDetails(newData){
-    console.log("Sending data from form: " + newData);
+  updateDetails() {
+    this.detailsForm.patchValue({
+      name: this.product.name,
+      description: this.product.description,
+      icon: this.product.icon,
+      priceOfSize: ['1','2','3'],
+      isActive: this.product.isActive
+    });
+  }
+
+  onSubmit(){
+    this.changeDetails();
+  }
+
+  private changeDetails(){
+    console.log("Sending data from form.");
     const updatedProduct: Product = {
       id: this.product.id,
       category: this.product.category,
-      name: newData.name,
-      description: newData.description,
-      isActive: newData.isActive,
+      name: this.detailsForm.controls['name'].value,
+      description: this.detailsForm.controls['description'].value,
+      isActive: this.detailsForm.controls['isActive'].value,
       priceOfSize: undefined,
-      icon: newData.icon
+      icon: this.detailsForm.controls['icon'].value,
     };
-    console.log("Trying to update product as: " + updatedProduct);
-
     this.updateSubscription = this.databaseService.updateProduct(updatedProduct).subscribe();
   }
 
+  get priceOfSize() {
+    return this.detailsForm.get('priceOfSize') as FormArray;
+  }
+
+  private addSize() {
+    this.priceOfSize.push(this.fb.control(''));
+  }
 
 
 }

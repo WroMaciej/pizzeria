@@ -1,6 +1,6 @@
 <div class="collecting-pattern">
   <h3>Product details:</h3>
-  <form #details=ngForm (ngSubmit)="changeDetails(details.value)">
+  <!-- <form #details=ngForm (ngSubmit)="changeDetails(details.value)">
     <div class="details-text">Name:</div>
     <input class="details-input" type="text" name="name" value={{product.name}} ngModel><br>
 
@@ -22,5 +22,61 @@
       <button class="product button clickable">CANCEL</button>
     </div>
 
+  </form> -->
+
+  <form [formGroup]="detailsForm" (ngSubmit)="onSubmit()">
+    <label>
+      Name:
+      <input type="text" formControlName="name" required>
+    </label><br>
+
+    <label>
+      Description:
+      <textarea type="text" formControlName="description" required></textarea>
+    </label>
+
+    <label>
+      Icon:
+      <input type="text" formControlName="icon">
+    </label>
+    
+
+    <div formArrayName="priceOfSize">
+      <h3>Price of size</h3> <button (click)="addSize()">Add size</button>
+
+      <div *ngFor="let size of priceOfSize.controls; let i=index">
+        <!-- The repeated alias template -->
+        <label>
+          Price of size {{i}}:
+          <input type="text" [formControlName]="i">
+        </label>
+      </div>
+    </div>
+
+    
+
+    <button type="submit" [disabled]="!detailsForm.valid">Submit</button>
   </form>
+
+  <hr>
+
+  <p>
+    <button (click)="updateDetails()">Update Details</button>
+  </p>
+
+
+  <p>
+    Form Value: {{ detailsForm.value | json }}
+  </p>
+
+
+  <p>
+    Form Status: {{ detailsForm.status }}
+  </p>
+
+
+
+
+
+
 </div>
