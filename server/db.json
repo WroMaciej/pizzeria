@@ -58,7 +58,9 @@
       "description": "Bahama alabama?",
       "isActive": true,
       "priceOfSize": [
-        13
+        13,
+        18,
+        26
       ],
       "icon": "/assets/img/drink-default.png"
     },
@@ -90,13 +92,13 @@
     {
       "id": 8,
       "category": "pizza",
-      "name": "Al Bano",
-      "description": "Felicita.",
+      "name": "Al Bano EDITED",
+      "description": "Felicita.\nnew Line of desciption",
       "isActive": true,
       "priceOfSize": [
-        32,
-        42,
-        52
+        11,
+        22,
+        33
       ],
       "icon": "/assets/img/pizza-default.png"
     },
@@ -211,12 +213,9 @@
       "description": "Try to eat that!",
       "isActive": true,
       "priceOfSize": [
-        "",
         65,
         68,
-        72,
-        "",
-        ""
+        72
       ],
       "icon": "/assets/img/pizza-default.png"
     },

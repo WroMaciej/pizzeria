@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../model/product.model';
 import { Subscription } from 'rxjs';
-import { FormBuilder, Validators, FormArray, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormArray, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-details',
@@ -35,8 +35,6 @@ export class DetailsComponent implements OnInit {
    ngOnDestroy(){
      this.productSubscription.unsubscribe();
      this.updateSubscription.unsubscribe();
-
-     
    }
 
   ngOnInit() {
@@ -61,10 +59,10 @@ export class DetailsComponent implements OnInit {
   }
 
   onSubmit(){
-    this.changeDetails();
+    this.saveChangesInDatabase();
   }
 
-  private changeDetails(){
+  private saveChangesInDatabase(){
     console.log("Sending data from form.");
     const updatedProduct: Product = {
       id: this.product.id,

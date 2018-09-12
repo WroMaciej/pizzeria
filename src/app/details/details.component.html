@@ -27,19 +27,25 @@
   <form [formGroup]="detailsForm" (ngSubmit)="onSubmit()">
     <label>
       Name:
-      <input type="text" formControlName="name" required>
-    </label><br>
+      <input class="details-input" type="text" formControlName="name" required>
+    </label><br><br>
 
     <label>
       Description:
-      <textarea type="text" formControlName="description" required></textarea>
-    </label>
+      <textarea class="details-input description" type="text" formControlName="description" required></textarea>
+    </label><br><br>
+
+    <div class="details-text">Is active:</div>
+    True
+    <input type="radio" name="isActive" [value]="true" formControlName="isActive">
+    False
+    <input type="radio" name="isActive" [value]="false" formControlName="isActive"><br>
 
     <label>
       Icon:
-      <input type="text" formControlName="icon">
+      <input class="details-input" type="text" formControlName="icon">
     </label>
-    
+
 
     <div formArrayName="priceOfSize">
       <h3>Price of size</h3>
@@ -47,17 +53,16 @@
       <button (click)="removeSize()">Remove size</button>
 
       <div *ngFor="let size of priceOfSize.controls; let i=index">
-        <!-- The repeated alias template -->
         <label>
           Price of size {{i}}:
-          <input type="number" [formControlName]="i">
+          <input class="details-input price" type="number" [formControlName]="i">
         </label>
       </div>
     </div>
 
-    
+    <button type="submit" [disabled]="!detailsForm.valid">SAVE</button>
 
-    <button type="submit" [disabled]="!detailsForm.valid">Submit</button>
+    <button (click)="updateDetails()">CANCEL</button>
   </form>
 
   <hr>
