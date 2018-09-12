@@ -33,8 +33,12 @@ export class DetailsComponent implements OnInit {
    }
 
    ngOnDestroy(){
-     this.productSubscription.unsubscribe();
-     this.updateSubscription.unsubscribe();
+     if (this.productSubscription){
+      this.productSubscription.unsubscribe();
+     }
+     if (this.updateSubscription){
+      this.updateSubscription.unsubscribe();
+     }
    }
 
   ngOnInit() {
@@ -60,6 +64,10 @@ export class DetailsComponent implements OnInit {
 
   onSubmit(){
     this.saveChangesInDatabase();
+  }
+
+  cancel(){
+    this.getProductFromDatabase(this.productId);
   }
 
   private saveChangesInDatabase(){
