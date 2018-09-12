@@ -1,0 +1,99 @@
+.collecting-pattern {
+    overflow:hidden;
+    overflow-y:scroll;
+    display: inline-block;
+    vertical-align: top;
+    background-color: beige;
+    width: 80%;
+    height: 500px;
+}
+
+.order {
+    display: block;
+    margin-left: 50px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    height: 90px;
+}
+
+.product:hover {
+    background-color: lightgray;
+}
+
+.product.icon {
+    display: inline-block;
+    margin-left: 5px;
+    margin-top: 5px;
+    width: 80px;
+    height: 80px;
+    border-style: none;
+
+}
+
+.product.text{
+    display: inline-block;
+    margin-left: 15px;
+    vertical-align: top;
+    width: 350px;
+    border-style: none;
+}
+
+.product.text.name {
+    margin-left: 0px;
+    font-size: 20px;
+    height: 30px;
+}
+
+.product.text.description {
+    margin-left: 0px;
+    vertical-align: top;
+    border-style: none;
+    height: 50px;
+    font-size: 12px;
+    color: blue;
+    border-style: none;
+}
+
+.product.buy-text{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 45px;
+    height: auto;
+    border-style: none;
+}
+
+.product.button {
+    display: inline-block;
+    align-content: center;
+    vertical-align: top;
+    margin-top: 1px;
+    margin-left: 10px;
+    width: 65px;
+    height: 75px;
+    border-style: none;
+}
+
+.product.button.description {
+    display: block;
+    margin-left: 0px;
+    margin-top: 0px;
+    height: 35px;
+    font-size: 12px;
+}
+
+.product.button.clickable {
+    display: block;
+    margin-left: 0px;
+    margin-top:10px;
+    height: 35px;
+    font-size: 15px;
+    background-color: red;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.product.button.clickable:hover{
+    cursor: pointer;
+    background-color: greenyellow;
+}

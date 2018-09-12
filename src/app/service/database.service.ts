@@ -39,12 +39,16 @@ export class DatabaseService {
     return this.http.put<Product>(`/api/products/${productToUpdate.id}`, productToUpdate);
   }
 
+  deleteProduct(id: number): Observable<void> {
+    return this.http.delete<void>(`/api/products/${id}`);
+  }
+
   addOrder(orderToAdd: Order): Observable<Order> {
     return this.http.post<Order>('/api/orders', orderToAdd);
   }
 
-  deleteProduct(id: number): Observable<void> {
-    return this.http.delete<void>(`/api/products/${id}`);
+  getOrders(){
+    return this.http.get<Order[]>('/api/orders');
   }
 
   getUserByUsernameAndPassword(username: string, password: string): Observable<User> {

@@ -3,9 +3,9 @@
     {
       "id": 1,
       "category": "pizza",
-      "name": "",
-      "description": "",
-      "isActive": "",
+      "name": "Margherita",
+      "description": "Simple pizza",
+      "isActive": true,
       "priceOfSize": [
         14,
         16,
@@ -18,13 +18,13 @@
       "category": "pizza",
       "name": "Hawai NEW",
       "description": "Brand new hawaii pizza",
-      "isActive": "true",
+      "isActive": true,
       "priceOfSize": [
         14,
         16,
         18
       ],
-      "icon": ""
+      "icon": "/assets/img/pizza-default.png"
     },
     {
       "id": 3,
@@ -72,8 +72,7 @@
       "isActive": true,
       "priceOfSize": [
         7,
-        10,
-        ""
+        10
       ],
       "icon": "/assets/img/drink-default.png"
     },
@@ -254,30 +253,48 @@
         {
           "productVariant": {
             "product": {
-              "id": 1,
+              "id": 9,
               "category": "pizza",
-              "name": "Margherita",
-              "description": "This is a simplest pizza ever.",
+              "name": "Angelo",
+              "description": "Good pizza.",
               "isActive": true,
               "priceOfSize": [
-                18,
-                20,
+                15,
+                16,
                 22
               ],
               "icon": "/assets/img/pizza-default.png"
             },
             "size": 0
           },
+          "quantity": 2
+        },
+        {
+          "productVariant": {
+            "product": {
+              "id": 3,
+              "category": "pasta",
+              "name": "Masta Pasta",
+              "description": "Tasty pasta.",
+              "isActive": true,
+              "priceOfSize": [
+                14,
+                16
+              ],
+              "icon": "/assets/img/pasta-default.png"
+            },
+            "size": 0
+          },
           "quantity": 1
         }
       ],
-      "totalPrice": 18,
-      "firstName": "e",
-      "lastName": "r",
-      "mobile": "w",
-      "city": "we",
-      "street": "rwd",
-      "zipCode": "fs",
+      "totalPrice": 44,
+      "firstName": "name",
+      "lastName": "last",
+      "mobile": "1133",
+      "city": "some city",
+      "street": "psadgf",
+      "zipCode": "gff",
       "id": 1
     },
     {
@@ -285,24 +302,42 @@
         {
           "productVariant": {
             "product": {
-              "id": 1,
-              "category": "pizza",
-              "name": "Margherita",
-              "description": "This is a simplest pizza ever.",
+              "id": 3,
+              "category": "pasta",
+              "name": "Masta Pasta",
+              "description": "Tasty pasta.",
               "isActive": true,
               "priceOfSize": [
-                18,
-                20,
-                22
+                14,
+                16
               ],
-              "icon": "/assets/img/pizza-default.png"
+              "icon": "/assets/img/pasta-default.png"
+            },
+            "size": 0
+          },
+          "quantity": 1
+        },
+        {
+          "productVariant": {
+            "product": {
+              "id": 5,
+              "category": "drink",
+              "name": "Alabama EDITED_14 asdsad",
+              "description": "Bahama alabama? asdsadsad",
+              "isActive": true,
+              "priceOfSize": [
+                13,
+                18,
+                26
+              ],
+              "icon": "/assets/img/drink-default.png"
             },
             "size": 0
           },
           "quantity": 1
         }
       ],
-      "totalPrice": 18,
+      "totalPrice": 27,
       "firstName": "",
       "lastName": "",
       "mobile": "",
@@ -310,265 +345,6 @@
       "street": "",
       "zipCode": "",
       "id": 2
-    },
-    {
-      "productQuantities": [
-        {
-          "productVariant": {
-            "product": {
-              "id": 1,
-              "category": "pizza",
-              "name": "Margherita",
-              "description": "This is a simplest pizza ever.",
-              "isActive": true,
-              "priceOfSize": [
-                18,
-                20,
-                22
-              ],
-              "icon": "/assets/img/pizza-default.png"
-            },
-            "size": 0
-          },
-          "quantity": 1
-        }
-      ],
-      "totalPrice": 18,
-      "firstName": "",
-      "lastName": "",
-      "mobile": "",
-      "city": "",
-      "street": "",
-      "zipCode": "",
-      "id": 3
-    },
-    {
-      "productQuantities": [
-        {
-          "productVariant": {
-            "product": {
-              "id": 1,
-              "category": "pizza",
-              "name": "Margherita",
-              "description": "This is a simplest pizza ever.",
-              "isActive": true,
-              "priceOfSize": [
-                18,
-                20,
-                22
-              ],
-              "icon": "/assets/img/pizza-default.png"
-            },
-            "size": 0
-          },
-          "quantity": 1
-        }
-      ],
-      "totalPrice": 18,
-      "firstName": "",
-      "lastName": "",
-      "mobile": "",
-      "city": "",
-      "street": "",
-      "zipCode": "",
-      "id": 4
-    },
-    {
-      "productQuantities": [
-        {
-          "productVariant": {
-            "product": {
-              "id": 1,
-              "category": "pizza",
-              "name": "Margherita",
-              "description": "This is a simplest pizza ever.",
-              "isActive": true,
-              "priceOfSize": [
-                18,
-                20,
-                22
-              ],
-              "icon": "/assets/img/pizza-default.png"
-            },
-            "size": 0
-          },
-          "quantity": 1
-        }
-      ],
-      "totalPrice": 18,
-      "firstName": "",
-      "lastName": "",
-      "mobile": "",
-      "city": "",
-      "street": "",
-      "zipCode": "",
-      "id": 5
-    },
-    {
-      "productQuantities": [],
-      "totalPrice": 18,
-      "firstName": "",
-      "lastName": "",
-      "mobile": "",
-      "city": "",
-      "street": "",
-      "zipCode": "",
-      "id": 6
-    },
-    {
-      "productQuantities": [
-        {
-          "productVariant": {
-            "product": {
-              "id": 1,
-              "category": "pizza",
-              "name": "Margherita",
-              "description": "This is a simplest pizza ever.",
-              "isActive": true,
-              "priceOfSize": [
-                18,
-                20,
-                22
-              ],
-              "icon": "/assets/img/pizza-default.png"
-            },
-            "size": 0
-          },
-          "quantity": 1
-        }
-      ],
-      "totalPrice": 18,
-      "firstName": "",
-      "lastName": "",
-      "mobile": "",
-      "city": "",
-      "street": "",
-      "zipCode": "",
-      "id": 7
-    },
-    {
-      "productQuantities": [
-        {
-          "productVariant": {
-            "product": {
-              "id": 1,
-              "category": "pizza",
-              "name": "Margherita",
-              "description": "This is a simplest pizza ever.",
-              "isActive": true,
-              "priceOfSize": [
-                18,
-                20,
-                22
-              ],
-              "icon": "/assets/img/pizza-default.png"
-            },
-            "size": 0
-          },
-          "quantity": 1
-        }
-      ],
-      "totalPrice": 18,
-      "firstName": "",
-      "lastName": "",
-      "mobile": "",
-      "city": "",
-      "street": "",
-      "zipCode": "",
-      "id": 8
-    },
-    {
-      "productQuantities": [
-        {
-          "productVariant": {
-            "product": {
-              "id": 1,
-              "category": "pizza",
-              "name": "Margherita",
-              "description": "This is a simplest pizza ever.",
-              "isActive": true,
-              "priceOfSize": [
-                18,
-                20,
-                22
-              ],
-              "icon": "/assets/img/pizza-default.png"
-            },
-            "size": 0
-          },
-          "quantity": 1
-        }
-      ],
-      "totalPrice": 18,
-      "firstName": "",
-      "lastName": "",
-      "mobile": "",
-      "city": "",
-      "street": "",
-      "zipCode": "",
-      "id": 9
-    },
-    {
-      "productQuantities": [
-        {
-          "productVariant": {
-            "product": {
-              "id": 1,
-              "category": "pizza",
-              "name": "Margherita",
-              "description": "This is a simplest pizza ever.",
-              "isActive": true,
-              "priceOfSize": [
-                18,
-                20,
-                22
-              ],
-              "icon": "/assets/img/pizza-default.png"
-            },
-            "size": 0
-          },
-          "quantity": 1
-        }
-      ],
-      "totalPrice": 18,
-      "firstName": "",
-      "lastName": "",
-      "mobile": "",
-      "city": "",
-      "street": "",
-      "zipCode": "",
-      "id": 10
-    },
-    {
-      "productQuantities": [
-        {
-          "productVariant": {
-            "product": {
-              "id": 1,
-              "category": "pizza",
-              "name": "Margherita",
-              "description": "This is a simplest pizza ever.",
-              "isActive": true,
-              "priceOfSize": [
-                18,
-                20,
-                22
-              ],
-              "icon": "/assets/img/pizza-default.png"
-            },
-            "size": 0
-          },
-          "quantity": 1
-        }
-      ],
-      "totalPrice": 18,
-      "firstName": "",
-      "lastName": "",
-      "mobile": "",
-      "city": "",
-      "street": "",
-      "zipCode": "",
-      "id": 11
     }
   ]
 }
