@@ -32,7 +32,7 @@ export class CartComponent implements OnInit {
   }
 
   private loadPositions() {
-    this.productQuantities = this.cartService.getAllProductQuantities(); //.getPositionsInCart().subscribe(totalPrice => this.cartTotalPrice = totalPrice);
+    this.productQuantities = this.cartService.getAllProductQuantities();
     console.log("Positions in cart: " + this.productQuantities.length);
     this.cartTotalPrice = this.cartService.calculateTotalPrice();
     console.log(this.cartTotalPrice);
@@ -54,7 +54,11 @@ export class CartComponent implements OnInit {
       street: data.street,
       zipCode: data.zipCode
     };
-    this.orderSubscription = this.databaseService.addOrder(confirmedOrder).subscribe(res => console.log(res));
+    this.orderSubscription = this.databaseService.addOrder(confirmedOrder).subscribe(res => console.log(res), () => {}, () => this.goToConfirmation() );
+    
+  }
+
+  goToConfirmation() {
     const orderPrice: number = this.cartTotalPrice;
     this.clearCart();
     console.log("Order added. Total price: " + orderPrice);
