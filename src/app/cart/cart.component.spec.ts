@@ -19,7 +19,12 @@ describe('CartComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
-    expect(component).toBeTruthy();
+  it('should load products from service on init', () => {
+    // GIVEN
+
+    // WHEN
+
+    // THEN
+    
   });
 });
