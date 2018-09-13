@@ -13,21 +13,20 @@ export class CartService {
     constructor() {
     }
 
-    addChoice(productVariantToAdd: ProductVariant) {
+    addProductVariant(productVariantToAdd: ProductVariant) {
         if (this.isProductVariantInCart(productVariantToAdd)) {
-            console.log("Adding new choice to existing position in cart.");
+            console.log('Adding new choice to existing position in cart.');
             this.productQuantities[this.getProductVariantIndexInCart(productVariantToAdd)].quantity += 1;
-        }
-        else {
-            console.log("Adding new position to cart.");
+        } else {
+            console.log('Adding new position to cart.');
             const newPosition: ProductQuantity = {
                 productVariant: productVariantToAdd,
                 quantity: 1
-            }
+            };
             this.productQuantities.push(newPosition);
         }
         this.totalPrice.next(this.calculateTotalPrice());
-        console.log("Now cart has " + this.getProductQuantityNumber() + " positions.");
+        console.log('Now cart has ' + this.getProductQuantityNumber() + ' positions.');
     }
 
     getTotalPrice(): Observable<number> {
@@ -39,7 +38,7 @@ export class CartService {
     }
 
     priceOfProductQuantity(positionNumber: number): number {
-        let position: ProductQuantity = this.productQuantities[positionNumber];
+        const position: ProductQuantity = this.productQuantities[positionNumber];
         return position.productVariant.product.priceOfSize[position.productVariant.size] * position.quantity;
     }
 
@@ -48,7 +47,7 @@ export class CartService {
     }
 
     calculateTotalPrice(): number {
-        let sum: number = 0;
+        let sum = 0;
         for (let i = 0; i < this.getProductQuantityNumber(); i++) {
             sum = sum + this.priceOfProductQuantity(i);
         }
@@ -65,7 +64,7 @@ export class CartService {
     }
 
     private getProductVariantIndexInCart(productVariant: ProductVariant): number {
-        let index = -1;
+        const index = -1;
         for (let i = 0; i < this.getProductQuantityNumber(); i++) {
             if (this.areProductVariantsEqual(this.productQuantities[i].productVariant, productVariant)) {
                 return i;

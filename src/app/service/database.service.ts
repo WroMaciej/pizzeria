@@ -57,7 +57,7 @@ export class DatabaseService {
   }
 
   categoryToString(category: Category): string {
-    let categoryName: string = category;
+    const categoryName: string = category;
     return categoryName;
   }
 }

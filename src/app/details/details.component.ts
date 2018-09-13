@@ -17,7 +17,7 @@ export class DetailsComponent implements OnInit {
   productSubscription: Subscription;
   updateSubscription: Subscription;
 
-  detailsForm  = this.fb.group({
+  detailsForm = this.fb.group({
     name: ['', Validators.required],
     description: ['', Validators.required],
     isActive: [''],
@@ -27,28 +27,29 @@ export class DetailsComponent implements OnInit {
     ])
   });
 
-  
-  constructor(private route: ActivatedRoute, private databaseService: DatabaseService, private fb: FormBuilder) {
-    
-   }
 
-   ngOnDestroy(){
-     if (this.productSubscription){
+  constructor(private route: ActivatedRoute, private databaseService: DatabaseService, private fb: FormBuilder) {
+  }
+
+  ngOnDestroy() {
+    if (this.productSubscription) {
       this.productSubscription.unsubscribe();
-     }
-     if (this.updateSubscription){
+    }
+    if (this.updateSubscription) {
       this.updateSubscription.unsubscribe();
-     }
-   }
+    }
+  }
 
   ngOnInit() {
     this.productId = this.route.snapshot.params.productId;
-    console.log("Loading details of product ID: "+ this.productId);
+    console.log('Loading details of product ID: ' + this.productId);
     this.getProductFromDatabase(this.productId);
   }
 
-  private getProductFromDatabase(productId: number){
-    this.productSubscription = this.databaseService.getProduct(productId).subscribe((product) => this.product = product, () => {}, () => this.updateDetails());
+  private getProductFromDatabase(productId: number) {
+    this.productSubscription
+      = this.databaseService.getProduct(productId)
+        .subscribe((product) => this.product = product, () => { }, () => this.updateDetails());
   }
 
   updateDetails() {
@@ -61,16 +62,16 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  onSubmit(){
+  onSubmit() {
     this.saveChangesInDatabase();
   }
 
-  cancel(){
+  cancel() {
     this.getProductFromDatabase(this.productId);
   }
 
-  private saveChangesInDatabase(){
-    console.log("Sending data from form.");
+  private saveChangesInDatabase() {
+    console.log('Sending data from form.');
     const updatedProduct: Product = {
       id: this.product.id,
       category: this.product.category,
@@ -93,7 +94,7 @@ export class DetailsComponent implements OnInit {
   }
 
   private removeSize() {
-    this.priceOfSize.removeAt(this.priceOfSize.length-1);
+    this.priceOfSize.removeAt(this.priceOfSize.length - 1);
   }
 
   private resetSizes() {

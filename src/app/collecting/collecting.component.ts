@@ -35,8 +35,12 @@ export class CollectingComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log("Chosen category: " + this.category);
-    this.isAdminSubscription = this.userService.isAdminLogged().pipe(finalize(() => this.loadProducts())).subscribe(isAdmin => this.isAdminLogged = isAdmin);
+    console.log('Chosen category: ' + this.category);
+    this.isAdminSubscription =
+      this.userService
+      .isAdminLogged()
+      .pipe(finalize(() => this.loadProducts()))
+      .subscribe(isAdmin => this.isAdminLogged = isAdmin);
     this.loadProducts();
   }
 
@@ -58,32 +62,31 @@ export class CollectingComponent implements OnInit, OnDestroy {
       product: chosenProduct,
       size: chosenSize
     }
-    console.log("Chosen product name: " + chosenProduct.name + " with size: " + chosenSize);
-    this.cartService.addChoice(productVariant);
+    console.log('Chosen product name: ' + chosenProduct.name + ' with size: ' + chosenSize);
+    this.cartService.addProductVariant(productVariant);
   }
 
   private loadProducts() {
-    console.log("Loading products...");
+    console.log('Loading products...');
 
     if (this.isAdminLogged && this.isAdminLogged == true) {
       this.productsSubscription = this.databaseService.getAllProductsByCategory(this.category)
         .subscribe(res => this.products = res, () => { }, () => this.populateSizeNamesForProducts());
-      console.log("Products loaded for admin.");
+      console.log('Products loaded for admin.');
     } else {
       this.productsSubscription = this.databaseService.getActiveProductsByCategory(this.category)
         .subscribe(res => this.products = res, () => { }, () => this.populateSizeNamesForProducts());
-      console.log("Products loaded for customer.");
+      console.log('Products loaded for customer.');
     }
   }
 
   private sizeNames(category: Category, sizesAvailable: number): Array<string> {
-    const sizesPizza: Array<string> = ["Small (20cm)", "Medium (25cm)", "Big (35cm)", "MONSTER (50cm)"];
-    const sizesPasta: Array<string> = ["Medium (300g)", "Big (400g)", "The biggest (500g)"];
-    const sizesDrink: Array<string> = ["Standard", "Big", "UNLIMITED"];
+    const sizesPizza: Array<string> = ['Small (20cm)', 'Medium (25cm)', 'Big (35cm)', 'MONSTER (50cm)'];
+    const sizesPasta: Array<string> = ['Medium (300g)', 'Big (400g)', 'The biggest (500g)'];
+    const sizesDrink: Array<string> = ['Standard', 'Big', 'UNLIMITED'];
     if (sizesAvailable < 2) {
-      return ["Normal"];
-    }
-    else {
+      return ['Normal'];
+    } else {
       if (category == Category.Pizza) {
         return sizesPizza;
       }
@@ -96,11 +99,10 @@ export class CollectingComponent implements OnInit, OnDestroy {
     }
   }
 
-  //TODO think about better place to that
+  // TODO think about better place to that
   private populateSizeNamesForProducts() {
-    console.log("Number of products: " + this.products.length);
-
-    for (let i: number = 0; i < this.products.length; i++) {
+    console.log('Number of products: ' + this.products.length);
+    for (let i = 0; i < this.products.length; i++) {
       this.sizeNamesForProducts.push(this.sizeNames(this.products[i].category, this.products[i].priceOfSize.length));
     }
   }

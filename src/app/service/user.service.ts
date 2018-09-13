@@ -20,7 +20,7 @@ export class UserService {
     }
 
     login(userData) {
-        console.log("Authenticating of user: " + userData.username);
+        console.log('Authenticating of user: ' + userData.username);
         this.loginSubscription = this.databaseService
             .getUserByUsernameAndPassword(userData.username, userData.password)
             .subscribe(user => this.currentUser = user, () => { }
@@ -38,17 +38,16 @@ export class UserService {
 
     private authenticateUser(user: User) {
         if (user && user.id) {
-            console.log("User " + user.username + " authenticated.");
+            console.log('User ' + user.username + ' authenticated.');
             if (user.isAdmin) {
-                console.log("User " + user.username + " has admin privileges.");
+                console.log('User ' + user.username + ' has admin privileges.');
             } else {
-                console.log("User " + user.username + " is a regular customer.");
+                console.log('User ' + user.username + ' is a regular customer.');
             }
             this.loginSubject.next(user);
             this.isAdminSubject.next(user.isAdmin);
-        }
-        else {
-            console.log("Wrong username or password.");
+        } else {
+            console.log('Wrong username or password.');
         }
     }
 
