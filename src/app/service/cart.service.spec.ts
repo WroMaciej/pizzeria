@@ -3,12 +3,10 @@ import { CartService } from './cart.service';
 import { ProductVariant } from '../model/product.variant.model';
 import { Category } from '../model/category.model';
 import { tick, fakeAsync, async, ComponentFixture, TestBed } from '@angular/core/testing';
+
 describe('CartService test', () => {
 
-    const cartService = new CartService();
-    let service: CartService;
-    let fixture: ComponentFixture<CartService>;
-
+    let cartService: CartService;
     const someProduct: Product = {
         id: 1,
         category: Category.Pizza,
@@ -19,36 +17,22 @@ describe('CartService test', () => {
         icon: 'icon.png'
     };
 
-    // beforeEach(async(() => {
-    //     TestBed.configureTestingModule({
-    //         imports: [],
-    //         declarations: [],
-    //         providers: []
-    //     }).compileComponents();
-    // }));
 
     beforeEach(() => {
-        console.log('Before test executes.');
-        fixture = TestBed.createComponent(CartService);
-        console.log('Fixture done.');
-        service = fixture.componentInstance;
-        fixture.detectChanges();
+        cartService = new CartService();
     });
 
 
-    it('should add product to empty cart', async(() => {
+    it('should add product to empty cart',() => {
         // GIVEN
         const productVariant: ProductVariant = {
             product: someProduct,
             size: 1
         };
-        let totalPrice: number;
         // WHEN
-        service.addProductVariant(productVariant);
-        service.getTotalPrice().subscribe(price => totalPrice = price);
+        cartService.addProductVariant(productVariant);
         // THEN
-        fixture.detectChanges();
         expect(cartService.getProductQuantityNumber()).toBe(1);
-        expect(totalPrice).toBe(20);
-    }));
+        cartService.getTotalPrice().subscribe(totalPrice => expect(totalPrice).toBe(20));
+    });
 });
