@@ -55,7 +55,7 @@
       <div *ngFor="let size of priceOfSize.controls; let i=index">
         <label>
           Price of size {{i}}:
-          <input class="details-input price" type="number" [formControlName]="i">
+          <input class="details-input price" type="number" [formControlName]="i" required>
         </label>
       </div>
     </div>
