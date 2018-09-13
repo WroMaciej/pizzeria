@@ -15,15 +15,18 @@
 
   <div class="topnav">
     <div>
-      <a class="active" routerLink="">Home</a>
+      <a routerLink="">Home</a>
       <a routerLink="about">About</a>
       <a routerLink="contact">Contact</a>
+      <a *ngIf="(!user?.isAdmin)" routerLink="cart">CART</a>
+      <a *ngIf="(user?.isAdmin)" routerLink="orders">ORDERS</a>
 
     </div>
 
+    <div class="cart-summary" *ngIf="(!user?.isAdmin)">
     <div>Total cost of order: </div>
     <div>{{cartTotalPrice | currency: 'EUR'}}</div>
-    <a routerLink="cart">CART</a>
+    </div>
 
     <div *ngIf="(user)" class="login-container">
       <div>User: {{user.username}}</div>

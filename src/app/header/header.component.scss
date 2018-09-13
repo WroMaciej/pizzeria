@@ -2,7 +2,7 @@
     display : block;
     text-align: center;
     font-size: 25px;
-    height: 90px;
+    height: 85px;
     background-color: orange;
     background-image: url('../../assets/img/header-background.jpg');
     background-repeat: no-repeat;
@@ -17,6 +17,12 @@
 }
 .logo{
     width: 80px;
+}
+
+.cart-summary{
+  margin-left: 100px;
+  display: inline-block;
+  color: white;
 }
 
 .title{
@@ -55,12 +61,9 @@
 
 .topnav .login-container {
   float: right;
-  //display: block;
-  border-style: solid;
-  border-width: 2px;
-  border-color: black;
+  border-style: none;
   margin-right: 100px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .topnav input {

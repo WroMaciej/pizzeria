@@ -3,7 +3,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CartService } from '../service/cart.service';
 import { Order } from '../model/order.model';
 import { DatabaseService } from '../service/database.service';
-import { log } from 'util';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -55,7 +54,6 @@ export class CartComponent implements OnInit {
       zipCode: data.zipCode
     };
     this.orderSubscription = this.databaseService.addOrder(confirmedOrder).subscribe(res => console.log(res), () => {}, () => this.goToConfirmation() );
-    
   }
 
   goToConfirmation() {
