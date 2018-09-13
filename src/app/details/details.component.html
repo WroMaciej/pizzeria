@@ -26,12 +26,12 @@
 
   <form [formGroup]="detailsForm" (ngSubmit)="onSubmit()">
     <label>
-      Name:
+      Name: <br>
       <input class="details-input" type="text" formControlName="name" required>
     </label><br><br>
 
     <label>
-      Description:
+      Description: <br>
       <textarea class="details-input description" type="text" formControlName="description" required></textarea>
     </label><br><br>
 
@@ -39,10 +39,10 @@
     True
     <input type="radio" name="isActive" [value]="true" formControlName="isActive">
     False
-    <input type="radio" name="isActive" [value]="false" formControlName="isActive"><br>
+    <input type="radio" name="isActive" [value]="false" formControlName="isActive"><br><br>
 
     <label>
-      Icon:
+      Icon: <br>
       <input class="details-input" type="text" formControlName="icon">
     </label>
 
@@ -55,7 +55,7 @@
       <div *ngFor="let size of priceOfSize.controls; let i=index">
         <label>
           Price of size {{i}}:
-          <input class="details-input price" type="number" [formControlName]="i" required>
+          <input class="details-input price" type="number" [formControlName]="i" min=1 max=999 required>
         </label>
       </div>
     </div>
@@ -64,22 +64,6 @@
 
     <button (click)="cancel()">CANCEL</button>
   </form>
-
-  <hr>
-
-
-  <p>
-    Form Value: {{ detailsForm.value | json }}
-  </p>
-
-
-  <p>
-    Form Status: {{ detailsForm.status }}
-  </p>
-
-
-
-
 
 
 </div>
