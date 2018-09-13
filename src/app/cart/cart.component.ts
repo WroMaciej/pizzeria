@@ -5,6 +5,7 @@ import { Order } from '../model/order.model';
 import { DatabaseService } from '../service/database.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { Validators, FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
@@ -17,8 +18,20 @@ export class CartComponent implements OnInit {
   cartTotalPrice: number;
   orderSubscription: Subscription;
 
-  constructor(private cartService: CartService, readonly databaseService: DatabaseService, private router: Router) {
-  }
+  cartForm = this.fb.group({
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    mobile: new FormControl('', [Validators.required, Validators.minLength(9)]),
+    city: ['', Validators.required],
+    street: ['', Validators.required],
+    zipCode: new FormControl('', [Validators.required, Validators.minLength(6)])
+  });
+
+  constructor(
+    private cartService: CartService,
+    readonly databaseService: DatabaseService,
+    private router: Router,
+    private fb: FormBuilder) { }
 
   ngOnInit() {
     this.loadPositions();
@@ -41,19 +54,19 @@ export class CartComponent implements OnInit {
     this.cartService.clearCart();
   }
 
-  confirmOrder(data) {
+  confirmOrder() {
     const confirmedOrder: Order = {
       id: undefined,
       productQuantities: this.productQuantities,
       totalPrice: this.cartTotalPrice,
-      firstName: data.firstName,
-      lastName: data.lastName,
-      mobile: data.mobile,
-      city: data.city,
-      street: data.street,
-      zipCode: data.zipCode
+      firstName: this.cartForm.controls['firstName'].value,
+      lastName: this.cartForm.controls['lastName'].value,
+      mobile: this.cartForm.controls['mobile'].value,
+      city: this.cartForm.controls['city'].value,
+      street: this.cartForm.controls['street'].value,
+      zipCode: this.cartForm.controls['zipCode'].value
     };
-    this.orderSubscription = this.databaseService.addOrder(confirmedOrder).subscribe(res => console.log(res), () => {}, () => this.goToConfirmation() );
+    this.orderSubscription = this.databaseService.addOrder(confirmedOrder).subscribe(res => console.log(res), () => { }, () => this.goToConfirmation());
   }
 
   goToConfirmation() {

@@ -45,7 +45,6 @@ export class DetailsComponent implements OnInit {
     this.productId = this.route.snapshot.params.productId;
     console.log("Loading details of product ID: "+ this.productId);
     this.getProductFromDatabase(this.productId);
-    
   }
 
   private getProductFromDatabase(productId: number){

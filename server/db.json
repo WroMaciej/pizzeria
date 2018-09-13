@@ -517,6 +517,37 @@
       "street": "Kosciuszko st. 1/1",
       "zipCode": "43-567",
       "id": 4
+    },
+    {
+      "productQuantities": [
+        {
+          "productVariant": {
+            "product": {
+              "id": 1,
+              "category": "pizza",
+              "name": "Margherita",
+              "description": "Simple pizza",
+              "isActive": true,
+              "priceOfSize": [
+                14,
+                16,
+                18
+              ],
+              "icon": "/assets/img/pizza-default.png"
+            },
+            "size": 0
+          },
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 14,
+      "firstName": "Tony",
+      "lastName": "Hawk",
+      "mobile": "445-555-665",
+      "city": "El Paso",
+      "street": "Texas st 5/6",
+      "zipCode": "45-555",
+      "id": 5
     }
   ]
 }
