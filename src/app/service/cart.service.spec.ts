@@ -6,7 +6,9 @@ import { tick, fakeAsync, async, ComponentFixture, TestBed } from '@angular/core
 describe('CartService test', () => {
 
     const cartService = new CartService();
+    let service: CartService;
     let fixture: ComponentFixture<CartService>;
+
     const someProduct: Product = {
         id: 1,
         category: Category.Pizza,
@@ -17,16 +19,19 @@ describe('CartService test', () => {
         icon: 'icon.png'
     };
 
-    beforeEach(async(() => {
-        TestBed.configureTestingModule({
-            imports: [],
-            declarations: [CartService],
-            providers: []
-        }).compileComponents();
-    }));
+    // beforeEach(async(() => {
+    //     TestBed.configureTestingModule({
+    //         imports: [],
+    //         declarations: [],
+    //         providers: []
+    //     }).compileComponents();
+    // }));
 
     beforeEach(() => {
+        console.log('Before test executes.');
         fixture = TestBed.createComponent(CartService);
+        console.log('Fixture done.');
+        service = fixture.componentInstance;
         fixture.detectChanges();
     });
 
@@ -39,8 +44,8 @@ describe('CartService test', () => {
         };
         let totalPrice: number;
         // WHEN
-        cartService.addProductVariant(productVariant);
-        cartService.getTotalPrice().subscribe(price => totalPrice = price);
+        service.addProductVariant(productVariant);
+        service.getTotalPrice().subscribe(price => totalPrice = price);
         // THEN
         fixture.detectChanges();
         expect(cartService.getProductQuantityNumber()).toBe(1);
