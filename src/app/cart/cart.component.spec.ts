@@ -54,7 +54,7 @@ describe('CartComponent', () => {
   };
 
   const cartServiceStub = {
-    getAllProductQuantities: () => of(
+    getAllProductQuantities: () => (
       [
         {
           productVariant: { product: product1, size: 0 },
@@ -78,7 +78,7 @@ describe('CartComponent', () => {
         },
       ]),
 
-    calculateTotalPrice: () => of(1 * 11 + 2 * 31 + 1 * 41 + 1 * 6 + 3 * 9)
+    calculateTotalPrice: () => (147)
   };
 
   beforeEach(async(() => {
@@ -101,18 +101,18 @@ describe('CartComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should load products from service on init', fakeAsync(() => {
+  it('should load products from service on init', async(() => {
     // GIVEN
     let productQuantities: Array<ProductQuantity>;
-    fixture.detectChanges();
+    let totalPrice: number;
     // WHEN
-    productQuantities = cartService.getAllProductQuantities(); // component.productQuantities;
+    productQuantities = component.productQuantities;
+    totalPrice = component.cartTotalPrice;
     // THEN
-    fixture.whenStable().then(() => {
-      tick(1000);
-      expect(productQuantities.length).toBe(5);
-    });
-    
-
+    expect(productQuantities.length).toBe(5);
+    expect(productQuantities[0].productVariant.product).toBe(product1);
+    expect(productQuantities[0].productVariant.size).toBe(0);
+    expect(productQuantities[0].quantity).toBe(1);
+    expect(totalPrice).toBe(147);
   }));
 });
