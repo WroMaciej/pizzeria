@@ -38,9 +38,9 @@ export class CollectingComponent implements OnInit, OnDestroy {
     console.log('Chosen category: ' + this.category);
     this.isAdminSubscription =
       this.userService
-      .isAdminLogged()
-      .pipe(finalize(() => this.loadProducts()))
-      .subscribe(isAdmin => this.isAdminLogged = isAdmin);
+        .isAdminLogged()
+        .pipe(finalize(() => this.loadProducts()))
+        .subscribe(isAdmin => this.isAdminLogged = isAdmin);
     this.loadProducts();
   }
 
@@ -48,12 +48,12 @@ export class CollectingComponent implements OnInit, OnDestroy {
     if (this.productsSubscription) {
       this.productsSubscription.unsubscribe();
     }
-    if (this.isAdminSubscription){
+    if (this.isAdminSubscription) {
       this.isAdminSubscription.unsubscribe();
     }
   }
 
-  goToDetails(productId: number){
+  goToDetails(productId: number) {
     this.router.navigate(['details/' + productId]);
   }
 
@@ -61,9 +61,10 @@ export class CollectingComponent implements OnInit, OnDestroy {
     const productVariant: ProductVariant = {
       product: chosenProduct,
       size: chosenSize
-    }
+    };
     console.log('Chosen product name: ' + chosenProduct.name + ' with size: ' + chosenSize);
     this.cartService.addProductVariant(productVariant);
+    window.alert('Product added.');
   }
 
   private loadProducts() {

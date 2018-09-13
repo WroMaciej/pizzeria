@@ -1,6 +1,6 @@
 <div class="collecting-pattern">
   <h3>Product details:</h3>
-  <form [formGroup]="detailsForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="detailsForm" (ngSubmit)="saveChangesInDatabase()">
     <label>
       Name: <br>
       <input class="details-input" type="text" formControlName="name" required>
@@ -22,11 +22,10 @@
       <input class="details-input" type="text" formControlName="icon">
     </label>
 
-
     <div formArrayName="priceOfSize">
       <h3>Price of size</h3>
-      <button (click)="addSize()">Add size</button>
-      <button (click)="removeSize()">Remove size</button>
+      <button type="button" (click)="addSize()">Add size</button>
+      <button type="button" (click)="removeSize()">Remove size</button>
 
       <div *ngFor="let size of priceOfSize.controls; let i=index">
         <label>
@@ -37,9 +36,7 @@
     </div>
 
     <button type="submit" [disabled]="!detailsForm.valid">SAVE</button>
-
-    <button (click)="cancel()">CANCEL</button>
+    <button type="reset" (click)="cancel()">CANCEL</button>
   </form>
-
 
 </div>

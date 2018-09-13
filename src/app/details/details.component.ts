@@ -62,15 +62,12 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    this.saveChangesInDatabase();
-  }
-
   cancel() {
     this.getProductFromDatabase(this.productId);
+    window.alert('Cancelled');
   }
 
-  private saveChangesInDatabase() {
+  saveChangesInDatabase() {
     console.log('Sending data from form.');
     const updatedProduct: Product = {
       id: this.product.id,
@@ -82,6 +79,7 @@ export class DetailsComponent implements OnInit {
       icon: this.detailsForm.controls['icon'].value,
     };
     this.updateSubscription = this.databaseService.updateProduct(updatedProduct).subscribe();
+    window.alert('Saved succesfully');
   }
 
   get priceOfSize() {
