@@ -30,7 +30,7 @@ describe('CartComponent', () => {
     description: 'product1 description',
     isActive: true,
     priceOfSize: [11, 21, 31],
-    icon: 'product1.png'
+    icon: ''
   };
 
   const product2: Product = {
@@ -40,7 +40,7 @@ describe('CartComponent', () => {
     description: 'product2 description',
     isActive: true,
     priceOfSize: [41, 51],
-    icon: 'product2.png'
+    icon: ''
   };
 
   const product3: Product = {
@@ -50,7 +50,7 @@ describe('CartComponent', () => {
     description: 'product3 description',
     isActive: true,
     priceOfSize: [6, 9],
-    icon: 'product3.png'
+    icon: ''
   };
 
   const cartServiceStub = {
@@ -115,4 +115,41 @@ describe('CartComponent', () => {
     expect(productQuantities[0].quantity).toBe(1);
     expect(totalPrice).toBe(147);
   }));
+
+  it('should show correct products number and names', async(() => {
+    // GIVEN
+    const shownProductsNames = new Array<String>();
+    let productTestedForExistance: HTMLElement;
+    // WHEN
+    for (let i = 0; i < 20; i++) {
+      productTestedForExistance = document.getElementById('product' + i);
+      if (productTestedForExistance) {
+        shownProductsNames.push(document.getElementById('product' + i + '_name').innerHTML);
+      }
+    }
+    // THEN
+    expect(shownProductsNames.length).toBe(5);
+    expect(shownProductsNames[0]).toBe('product1 name');
+    expect(shownProductsNames[1]).toBe('product1 name');
+    expect(shownProductsNames[2]).toBe('product2 name');
+    expect(shownProductsNames[3]).toBe('product3 name');
+    expect(shownProductsNames[4]).toBe('product3 name');
+  }));
+
+  it('should show correct total price value and currency', async(() => {
+    // GIVEN
+    let shownTotalPriceDirty: string;
+    let currency: string;
+    let value: number;
+    // WHEN
+    shownTotalPriceDirty = document.getElementById('totalPrice').innerHTML;
+    shownTotalPriceDirty = shownTotalPriceDirty.split(': ').pop();
+    currency = shownTotalPriceDirty.charAt(0);
+    // tslint:disable-next-line:radix
+    value = parseInt(shownTotalPriceDirty.substr(1));
+    // THEN
+    expect(value).toBe(147);
+    expect(currency).toBe('€');
+  }));
+
 });
