@@ -83,7 +83,7 @@ describe('CartComponent', () => {
 
     calculateTotalPrice: () => (147),
 
-    clearCart: () => {}
+    clearCart: () => { }
   };
 
   const databaseServiceStub = {
@@ -91,7 +91,7 @@ describe('CartComponent', () => {
   };
 
   const routerStub = {
-    navigate: () => {}
+    navigate: () => { }
   };
 
   beforeEach(async(() => {
@@ -110,7 +110,7 @@ describe('CartComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CartComponent);
     cartService = TestBed.get(CartService);
-    databaseService =  TestBed.get(DatabaseService);
+    databaseService = TestBed.get(DatabaseService);
     component = fixture.componentInstance;
     domElement = fixture.nativeElement;
     httpMock = TestBed.get(HttpTestingController);
@@ -185,7 +185,55 @@ describe('CartComponent', () => {
     expect(component.cartForm.status).toBe('VALID');
   }));
 
+  it('should be invalid form for empty inputs', async(() => {
+    // GIVEN on setup
+    // WHEN
+    component.cartForm.patchValue({
+      firstName: '',
+      lastName: '',
+      mobile: '',
+      city: '',
+      street: '',
+      zipCode: ''
+    });
+    fixture.detectChanges();
+    // THEN
+    expect(component.cartForm.status).toBe('INVALID');
+  }));
 
+  it('should be invalid form for too short mobile', async(() => {
+    // GIVEN on setup
+    // WHEN
+    component.cartForm.patchValue({
+      firstName: 'FirstName',
+      lastName: 'LastName',
+      mobile: '12345678',
+      city: 'TheCity',
+      street: 'TheStreet 1/1',
+      zipCode: '12-456'
+    });
+    fixture.detectChanges();
+    // THEN
+    expect(component.cartForm.status).toBe('INVALID');
+    expect(component.cartForm.controls['mobile'].status).toBe('INVALID');
+  }));
+
+  it('should be invalid form for too short zipCode', async(() => {
+    // GIVEN on setup
+    // WHEN
+    component.cartForm.patchValue({
+      firstName: 'FirstName',
+      lastName: 'LastName',
+      mobile: '123456789',
+      city: 'TheCity',
+      street: 'TheStreet 1/1',
+      zipCode: '12-45'
+    });
+    fixture.detectChanges();
+    // THEN
+    expect(component.cartForm.status).toBe('INVALID');
+    expect(component.cartForm.controls['zipCode'].status).toBe('INVALID');
+  }));
 
   it('should perform order, clear cart and go to confirmation for valid form', async(() => {
     // GIVEN
