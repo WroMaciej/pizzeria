@@ -153,7 +153,8 @@ describe('CartComponent', () => {
   }));
 
   it('should be valid form for correct inputs', async(() => {
-    // GIVEN
+    // GIVEN on setup
+    // WHEN
     component.cartForm.patchValue({
       firstName: 'FirstName',
       lastName: 'LastName',
@@ -163,7 +164,6 @@ describe('CartComponent', () => {
       zipCode: '12-456'
     });
     fixture.detectChanges();
-    // WHEN
     // THEN
     expect(component.cartForm.status).toBe('VALID');
   }));
@@ -182,10 +182,12 @@ describe('CartComponent', () => {
     });
     fixture.detectChanges();
     // WHEN
-    spyOn(component, 'confirmOrder');
+    spyOn(component, 'confirmOrder').and.callThrough();
+    spyOn(component, 'goToConfirmation').and.callThrough();
     document.getElementById('button-submit').click();
     // THEN
     expect(component.confirmOrder).toHaveBeenCalled();
+    expect(component.goToConfirmation).toHaveBeenCalled(); //database mock needed
     //ADD MORE
   }));
 
