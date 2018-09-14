@@ -282,7 +282,7 @@ describe('CartComponent', () => {
     expect(component.confirmOrder).not.toHaveBeenCalled();
     expect(component.goToConfirmation).not.toHaveBeenCalled();
     expect(cartService.clearCart).not.toHaveBeenCalled();
-    expect(router.navigate).not.toHaveBeenCalledWith(['confirmation/147']);
+    expect(router.navigate).not.toHaveBeenCalled();
   }));
 
 });
