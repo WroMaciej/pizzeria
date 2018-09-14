@@ -30,17 +30,17 @@
     <h3>Delivery address:</h3>
     <form [formGroup]="cartForm" (ngSubmit)="confirmOrder()">
       <b class="address-text">First name:</b>
-      <input class="address-input" type="text" formControlName="firstName" placeholder="First name"><br>
+      <input class="address-input" id="address-firstName" type="text" formControlName="firstName" placeholder="First name"><br>
       <b class="address-text">Last name:</b>
-      <input class="address-input" type="text" formControlName="lastName" placeholder="Last name"><br>
+      <input class="address-input" id="address-lastName" type="text" formControlName="lastName" placeholder="Last name"><br>
       <b class="address-text">Mobile:</b>
-      <input class="address-input" type="text" formControlName="mobile" placeholder="Mobile"><br>
+      <input class="address-input" id="address-mobile" type="text" formControlName="mobile" placeholder="Mobile"><br>
       <b class="address-text">City:</b>
-      <input class="address-input" type="text" formControlName="city" placeholder="City"><br>
+      <input class="address-input" id="address-city" type="text" formControlName="city" placeholder="City"><br>
       <b class="address-text">Street:</b>
-      <input class="address-input" type="text" formControlName="street" placeholder="Street"><br>
+      <input class="address-input" id="address-street" type="text" formControlName="street" placeholder="Street"><br>
       <b class="address-text">Zip-Code:</b>
-      <input class="address-input" type="text" formControlName="zipCode" placeholder="Zip-Code"><br>
+      <input class="address-input" id="address-zipCode" type="text" formControlName="zipCode" placeholder="Zip-Code"><br>
 
       <div class="order">
         <div class="order inner">
@@ -48,7 +48,7 @@
           TOTAL PRICE: {{cartTotalPrice | currency: 'EUR'}}
           </div>
 
-          <button type="submit" [disabled]="!cartForm.valid">ORDER</button>
+          <button type="submit" id="button-submit" [disabled]="!cartForm.valid">ORDER</button>
         </div>
       </div>
 

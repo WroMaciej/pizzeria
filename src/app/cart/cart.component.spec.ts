@@ -152,4 +152,41 @@ describe('CartComponent', () => {
     expect(currency).toBe('€');
   }));
 
+  it('should be valid form for correct inputs', async(() => {
+    // GIVEN
+    component.cartForm.patchValue({
+      firstName: 'FirstName',
+      lastName: 'LastName',
+      mobile: '123456789',
+      city: 'TheCity',
+      street: 'TheStreet 1/1',
+      zipCode: '12-456'
+    });
+    fixture.detectChanges();
+    // WHEN
+    // THEN
+    expect(component.cartForm.status).toBe('VALID');
+  }));
+
+
+
+  it('should perform order for valid form', async(() => {
+    // GIVEN
+    component.cartForm.patchValue({
+      firstName: 'FirstName',
+      lastName: 'LastName',
+      mobile: '123456789',
+      city: 'TheCity',
+      street: 'TheStreet 1/1',
+      zipCode: '12-456'
+    });
+    fixture.detectChanges();
+    // WHEN
+    spyOn(component, 'confirmOrder');
+    document.getElementById('button-submit').click();
+    // THEN
+    expect(component.confirmOrder).toHaveBeenCalled();
+    //ADD MORE
+  }));
+
 });
