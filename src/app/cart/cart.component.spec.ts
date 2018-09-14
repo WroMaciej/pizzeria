@@ -1,3 +1,4 @@
+import { DatabaseService } from './../service/database.service';
 import { FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ProductVariant } from './../model/product.variant.model';
 import { CartService } from './../service/cart.service';
@@ -20,8 +21,10 @@ describe('CartComponent', () => {
   let component: CartComponent;
   let fixture: ComponentFixture<CartComponent>;
   let domElement: any;
-  let httpMock;
+  let httpMock: HttpTestingController;
+  let router;
   let cartService;
+  let databaseService;
 
   const product1: Product = {
     id: 1,
@@ -78,7 +81,17 @@ describe('CartComponent', () => {
         },
       ]),
 
-    calculateTotalPrice: () => (147)
+    calculateTotalPrice: () => (147),
+
+    clearCart: () => {}
+  };
+
+  const databaseServiceStub = {
+    addOrder: () => of()
+  };
+
+  const routerStub = {
+    navigate: () => {}
   };
 
   beforeEach(async(() => {
@@ -86,7 +99,9 @@ describe('CartComponent', () => {
       imports: [HttpClientTestingModule, FormsModule, ReactiveFormsModule, RouterTestingModule],
       declarations: [CartComponent],
       providers: [
-        { provide: CartService, useValue: cartServiceStub }
+        { provide: CartService, useValue: cartServiceStub },
+        { provide: DatabaseService, useValue: databaseServiceStub },
+        { provide: Router, useValue: routerStub }
       ]
     })
       .compileComponents();
@@ -95,9 +110,11 @@ describe('CartComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CartComponent);
     cartService = TestBed.get(CartService);
+    databaseService =  TestBed.get(DatabaseService);
     component = fixture.componentInstance;
     domElement = fixture.nativeElement;
     httpMock = TestBed.get(HttpTestingController);
+    router = TestBed.get(Router);
     fixture.detectChanges();
   });
 
@@ -170,7 +187,7 @@ describe('CartComponent', () => {
 
 
 
-  it('should perform order for valid form', async(() => {
+  it('should perform order, clear cart and go to confirmation for valid form', async(() => {
     // GIVEN
     component.cartForm.patchValue({
       firstName: 'FirstName',
@@ -184,11 +201,14 @@ describe('CartComponent', () => {
     // WHEN
     spyOn(component, 'confirmOrder').and.callThrough();
     spyOn(component, 'goToConfirmation').and.callThrough();
+    spyOn(cartService, 'clearCart').and.callThrough();
+    spyOn(router, 'navigate').and.callThrough();
     document.getElementById('button-submit').click();
     // THEN
     expect(component.confirmOrder).toHaveBeenCalled();
-    expect(component.goToConfirmation).toHaveBeenCalled(); //database mock needed
-    //ADD MORE
+    expect(component.goToConfirmation).toHaveBeenCalled();
+    expect(cartService.clearCart).toHaveBeenCalled();
+    expect(router.navigate).toHaveBeenCalledWith(['confirmation/147']);
   }));
 
 });
