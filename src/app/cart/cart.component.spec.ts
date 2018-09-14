@@ -246,17 +246,43 @@ describe('CartComponent', () => {
       zipCode: '12-456'
     });
     fixture.detectChanges();
-    // WHEN
     spyOn(component, 'confirmOrder').and.callThrough();
     spyOn(component, 'goToConfirmation').and.callThrough();
     spyOn(cartService, 'clearCart').and.callThrough();
     spyOn(router, 'navigate').and.callThrough();
+    // WHEN
     document.getElementById('button-submit').click();
     // THEN
+    expect(document.getElementById('button-submit').getAttribute('disabled')).toBeNull();
     expect(component.confirmOrder).toHaveBeenCalled();
     expect(component.goToConfirmation).toHaveBeenCalled();
     expect(cartService.clearCart).toHaveBeenCalled();
     expect(router.navigate).toHaveBeenCalledWith(['confirmation/147']);
+  }));
+
+  it('should disable orderind for invalid form', async(() => {
+    // GIVEN
+    component.cartForm.patchValue({
+      firstName: '',
+      lastName: '',
+      mobile: '',
+      city: '',
+      street: '',
+      zipCode: ''
+    });
+    fixture.detectChanges();
+    spyOn(component, 'confirmOrder').and.callThrough();
+    spyOn(component, 'goToConfirmation').and.callThrough();
+    spyOn(cartService, 'clearCart').and.callThrough();
+    spyOn(router, 'navigate').and.callThrough();
+    // WHEN
+    document.getElementById('button-submit').click();
+    // THEN
+    expect(document.getElementById('button-submit').getAttribute('disabled')).not.toBeNull();
+    expect(component.confirmOrder).not.toHaveBeenCalled();
+    expect(component.goToConfirmation).not.toHaveBeenCalled();
+    expect(cartService.clearCart).not.toHaveBeenCalled();
+    expect(router.navigate).not.toHaveBeenCalledWith(['confirmation/147']);
   }));
 
 });
