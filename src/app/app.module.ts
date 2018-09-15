@@ -21,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { DetailsComponent } from './details/details.component';
 import { OrdersComponent } from './orders/orders.component'; 
+import { SizeService } from './service/size.service';
 
 
 const appRoutes: Routes = [
@@ -60,7 +61,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [UserService, CartService],
+  providers: [UserService, CartService, SizeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

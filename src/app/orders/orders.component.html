@@ -5,6 +5,7 @@
     <div class="product text">
       Order no: <b>{{order.id}}</b> <br>
       Name: {{order.firstName}} {{order.lastName}} <br>
+      Mobile: {{order.mobile}} <br>
       Address: {{order.street}}, {{order.zipCode}} {{order.city}} <br><br>
       Total Price: {{order.totalPrice | currency: 'EUR'}}
     </div>
@@ -13,12 +14,14 @@
       <ol>
 
         <li *ngFor="let productQuantity of order.productQuantities">
-          ({{productQuantity.productVariant.product.category}}) {{productQuantity.productVariant.product.name}}
-           size {{productQuantity.productVariant.size}} x {{productQuantity.quantity}}
+          ({{productQuantity.productVariant.product.category}}) 
+          <b>{{productQuantity.productVariant.product.name}}</b>
+          <i> {{sizeService.getSizeNameForProduct(productQuantity.productVariant.product, productQuantity.productVariant.size)}}</i>
+          <b> x {{productQuantity.quantity}}</b> 
         </li>
       </ol>
     </div>
   </div>
-
+  
 
 </div>

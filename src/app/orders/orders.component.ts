@@ -1,3 +1,4 @@
+import { SizeService } from './../service/size.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DatabaseService } from '../service/database.service';
 import { Order } from '../model/order.model';
@@ -13,7 +14,7 @@ export class OrdersComponent implements OnInit {
   orders: Array<Order>;
   ordersSubscription: Subscription;
 
-  constructor(readonly databaseService: DatabaseService) { }
+  constructor(readonly databaseService: DatabaseService, private sizeService: SizeService) { }
 
   ngOnInit() {
     this.loadOrders();

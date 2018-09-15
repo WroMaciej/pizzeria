@@ -1,3 +1,4 @@
+import { SizeService } from './../service/size.service';
 import { ProductQuantity } from '../model/product.quantity.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CartService } from '../service/cart.service';
@@ -29,6 +30,7 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
+    private sizeService: SizeService,
     readonly databaseService: DatabaseService,
     private router: Router,
     private fb: FormBuilder) { }

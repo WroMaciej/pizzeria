@@ -1,3 +1,4 @@
+import { SizeService } from './../service/size.service';
 import { DatabaseService } from './../service/database.service';
 import { FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ProductVariant } from './../model/product.variant.model';
@@ -15,6 +16,7 @@ import {
 } from '@angular/common/http/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { SizeService } from '../service/size.service';
 
 describe('CartComponent', () => {
 
@@ -24,6 +26,7 @@ describe('CartComponent', () => {
   let httpMock: HttpTestingController;
   let router;
   let cartService;
+  const sizeService = new SizeService();
   let databaseService;
 
   const product1: Product = {
@@ -101,7 +104,8 @@ describe('CartComponent', () => {
       providers: [
         { provide: CartService, useValue: cartServiceStub },
         { provide: DatabaseService, useValue: databaseServiceStub },
-        { provide: Router, useValue: routerStub }
+        { provide: Router, useValue: routerStub },
+        {provide: SizeService, useValue: sizeService}
       ]
     })
       .compileComponents();
