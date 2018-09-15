@@ -1,5 +1,8 @@
 <div class="collecting-pattern">
-  <div *ngIf="(productQuantities.length == 0)">Your cart is empty - feel free to order some delicious meal!</div>
+  <div *ngIf="(productQuantities.length == 0)">
+    <b>Your cart is empty - feel free to order some delicious meal!</b>
+    <img class="picture" src="assets/img/cart-empty.png">
+  </div>
 
   <div *ngIf="(productQuantities.length > 0)">
 

@@ -74,7 +74,7 @@
         7,
         10
       ],
-      "icon": "/assets/img/drink-default.png"
+      "icon": "/assets/img/beer.png"
     },
     {
       "id": 7,
@@ -231,6 +231,42 @@
         99
       ],
       "icon": "/assets/img/pizza-default.png"
+    },
+    {
+      "id": 19,
+      "category": "pasta",
+      "name": "Spaghetti Bolognese",
+      "description": "Traditional italian pasta with tomato sauce and very long pasta.",
+      "isActive": true,
+      "priceOfSize": [
+        20,
+        25
+      ],
+      "icon": "/assets/img/pasta-default.png"
+    },
+    {
+      "id": 20,
+      "category": "pasta",
+      "name": "Carbonara",
+      "description": "Delicious mix of pasta, cheese and herbs.",
+      "isActive": true,
+      "priceOfSize": [
+        19,
+        24
+      ],
+      "icon": "/assets/img/pasta-default.png"
+    },
+    {
+      "id": 21,
+      "category": "drink",
+      "name": "Nuka-Cola",
+      "description": "Cola from the times when world was different.",
+      "isActive": true,
+      "priceOfSize": [
+        5,
+        7
+      ],
+      "icon": "/assets/img/nuka-cola.png"
     }
   ],
   "users": [
