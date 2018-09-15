@@ -1,4 +1,3 @@
-import { SizeService } from './../service/size.service';
 import { DatabaseService } from './../service/database.service';
 import { FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ProductVariant } from './../model/product.variant.model';
