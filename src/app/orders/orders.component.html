@@ -13,9 +13,8 @@
       <ol>
 
         <li *ngFor="let productQuantity of order.productQuantities">
-          ({{productQuantity.productVariant.product.category}}) {{productQuantity.productVariant.product.name}} size {{productQuantity.productVariant.size}} x
-          {{productQuantity.quantity}}
-
+          ({{productQuantity.productVariant.product.category}}) {{productQuantity.productVariant.product.name}}
+           size {{productQuantity.productVariant.size}} x {{productQuantity.quantity}}
         </li>
       </ol>
     </div>
