@@ -2,7 +2,7 @@ import { DatabaseService } from './../service/database.service';
 import { FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ProductVariant } from './../model/product.variant.model';
 import { CartService } from './../service/cart.service';
-import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick, inject } from '@angular/core/testing';
 
 import { CartComponent } from './cart.component';
 import { ProductQuantity } from '../model/product.quantity.model';
@@ -104,7 +104,7 @@ describe('CartComponent', () => {
         { provide: CartService, useValue: cartServiceStub },
         { provide: DatabaseService, useValue: databaseServiceStub },
         { provide: Router, useValue: routerStub },
-        {provide: SizeService, useValue: sizeService}
+        { provide: SizeService, useValue: sizeService }
       ]
     })
       .compileComponents();
@@ -134,6 +134,17 @@ describe('CartComponent', () => {
     expect(productQuantities[0].productVariant.size).toBe(0);
     expect(productQuantities[0].quantity).toBe(1);
     expect(totalPrice).toBe(147);
+  }));
+
+  it('should warn empty cart when no products in cart', inject([CartService], cartServiceSpy => {
+    // GIVEN
+    spyOn(cartServiceSpy, 'getAllProductQuantities').and.returnValue([]);
+    fixture = TestBed.createComponent(CartComponent);
+    // WHEN
+    fixture.detectChanges();
+    const emptyCartWarn = document.getElementById('empty-cart-warn');
+    // THEN
+    expect(emptyCartWarn).not.toBeNull();
   }));
 
   it('should show correct products number and names', async(() => {
