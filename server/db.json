@@ -16,15 +16,16 @@
     {
       "id": 2,
       "category": "pizza",
-      "name": "Hawai",
-      "description": "Brand new hawaii pizza",
+      "name": "La Angulare",
+      "description": "Even monster size is available",
       "isActive": true,
       "priceOfSize": [
-        14,
-        16,
-        18
+        65,
+        68,
+        72,
+        99
       ],
-      "icon": "/assets/img/pizza-default.png"
+      "icon": "/assets/img/pizza-angulare.png"
     },
     {
       "id": 3,
@@ -104,15 +105,15 @@
     {
       "id": 9,
       "category": "pizza",
-      "name": "Angelo",
-      "description": "Good pizza.",
+      "name": "Corrida",
+      "description": "Hot pizza.",
       "isActive": true,
       "priceOfSize": [
-        15,
-        16,
-        22
+        14,
+        20,
+        25
       ],
-      "icon": "/assets/img/pizza-default.png"
+      "icon": "/assets/img/pizza-corrida.png"
     },
     {
       "id": 10,
@@ -195,13 +196,13 @@
     {
       "id": 16,
       "category": "pizza",
-      "name": "Corrida",
-      "description": "Hot pizza.",
+      "name": "Angelo",
+      "description": "Good pizza.",
       "isActive": true,
       "priceOfSize": [
-        14,
-        20,
-        25
+        15,
+        16,
+        22
       ],
       "icon": "/assets/img/pizza-default.png"
     },
@@ -221,14 +222,13 @@
     {
       "id": 18,
       "category": "pizza",
-      "name": "La Angulare",
-      "description": "Even monster size is available",
+      "name": "Hawai",
+      "description": "Brand new hawaii pizza",
       "isActive": true,
       "priceOfSize": [
-        65,
-        68,
-        72,
-        99
+        14,
+        16,
+        18
       ],
       "icon": "/assets/img/pizza-default.png"
     },
