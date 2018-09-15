@@ -1,3 +1,4 @@
+import { CartService } from './cart.service';
 import { DatabaseService } from './database.service';
 import { Injectable, OnDestroy } from '@angular/core';
 import { ProductQuantity } from '../model/product.quantity.model';
@@ -8,11 +9,11 @@ import { Subscription, Observable, Subject, BehaviorSubject } from 'rxjs';
 export class UserService {
 
     currentUser: User;
-    loginSubject: BehaviorSubject<User> = new BehaviorSubject<User>(undefined); //Subject<User> = new Subject<User>(); //
+    loginSubject: BehaviorSubject<User> = new BehaviorSubject<User>(undefined);
     isAdminSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     loginSubscription: Subscription;
 
-    constructor(private databaseService: DatabaseService) {
+    constructor(private databaseService: DatabaseService, private cartService: CartService) {
     }
 
     ngOnDestroy() {
@@ -27,10 +28,12 @@ export class UserService {
                 , () => {
                     this.currentUser = this.currentUser[0];
                     this.authenticateUser(this.currentUser);
+                    this.cartService.clearCart();
                 });
     }
 
     logout() {
+        this.cartService.clearCart();
         this.loginSubject.next(undefined);
         this.isAdminSubject.next(false);
         this.currentUser = undefined;

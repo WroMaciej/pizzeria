@@ -57,6 +57,7 @@ export class CartService {
     clearCart() {
         this.productQuantities.length = 0;
         this.totalPrice.next(0);
+        console.log('Cart has been cleared');
     }
 
     private areProductVariantsEqual(variant1: ProductVariant, variant2: ProductVariant): boolean {
