@@ -14,7 +14,12 @@
     border-style: solid;
     border-color: black;
     border-width: 1px;
-    height: 90px;
+    height: auto;
+}
+
+.products-holder {
+    display: inline-block;
+
 }
 
 .product:hover {
@@ -35,7 +40,7 @@
     display: inline-block;
     margin-left: 15px;
     vertical-align: top;
-    width: 350px;
+    width: 400px;
     border-style: none;
 }
 
