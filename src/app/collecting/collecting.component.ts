@@ -25,6 +25,7 @@ export class CollectingComponent implements OnInit, OnDestroy {
   productsSubscription: Subscription;
   isAdminSubscription: Subscription;
   newProductSubscription: Subscription;
+  deleteProductSubscription: Subscription;
   isAdminLogged = false;
 
   constructor(
@@ -56,6 +57,9 @@ export class CollectingComponent implements OnInit, OnDestroy {
     if (this.newProductSubscription) {
       this.newProductSubscription.unsubscribe();
     }
+    if (this.deleteProductSubscription) {
+      this.deleteProductSubscription.unsubscribe();
+    }
   }
 
   goToDetails(productId: number) {
@@ -83,10 +87,17 @@ export class CollectingComponent implements OnInit, OnDestroy {
       priceOfSize: [10]
     };
     let productAdded: Product;
-    this.newProductSubscription = this.databaseService.addProduct(newProduct).subscribe(added => productAdded = added, () => {}, () => {
+    this.newProductSubscription = this.databaseService.addProduct(newProduct).subscribe(added => productAdded = added, () => { }, () => {
       this.router.navigate(['details/' + productAdded.id]);
     });
+  }
 
+  deleteProduct(productId: number) {
+    this.deleteProductSubscription =
+      this.databaseService.deleteProduct(productId).subscribe(() => { }, () => { }, () => {
+        window.alert('Product deleted.');
+        this.loadProducts();
+      });
   }
 
   private loadProducts() {

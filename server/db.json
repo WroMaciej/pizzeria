@@ -267,30 +267,6 @@
         7
       ],
       "icon": "/assets/img/nuka-cola.png"
-    },
-    {
-      "id": 22,
-      "category": "pizza",
-      "name": "Custom pizza",
-      "description": "Tastes great!",
-      "isActive": false,
-      "priceOfSize": [
-        10,
-        12,
-        14
-      ],
-      "icon": "/assets/img/pizza-default.png"
-    },
-    {
-      "category": "pizza",
-      "name": "Product name",
-      "description": "Product description",
-      "isActive": false,
-      "icon": "/assets/img/pizza-default.png",
-      "priceOfSize": [
-        10
-      ],
-      "id": 23
     }
   ],
   "users": [
