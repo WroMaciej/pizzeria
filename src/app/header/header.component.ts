@@ -12,7 +12,7 @@ import { User } from '../model/user.model';
 })
 export class HeaderComponent implements OnInit {
 
-  cartTotalPrice: number = 0;
+  cartTotalPrice = 0;
   priceSubscription: Subscription;
   userSubscription: Subscription;
   user: User;
@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    console.log("Logging out...");
+    console.log('Logging out...');
     this.userService.logout();
   }
 

@@ -1,4 +1,4 @@
-import { ProductQuantity } from "./product.quantity.model";
+import { ProductQuantity } from './product.quantity.model';
 
 export interface Order {
     id: number;

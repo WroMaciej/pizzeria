@@ -1,5 +1,5 @@
 export enum Category {
-	Pizza = 'pizza',
+    Pizza = 'pizza',
     Pasta = 'pasta',
     Drink = 'drink'
 }

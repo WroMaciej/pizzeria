@@ -62,5 +62,4 @@ export class UserService {
         return this.isAdminSubject.asObservable();
     }
 
-
 }
