@@ -35,7 +35,7 @@ const appRoutes: Routes = [
   { path: 'pasta', component: CollectingComponent },
   { path: 'drink', component: CollectingComponent },
   { path: 'confirmation/:totalPrice', component: ConfirmationComponent },
-  { path: 'details/:productId', component: DetailsComponent, canActivate: [AdminGuard]},
+  { path: 'details/:productId', component: DetailsComponent},
   { path: 'orders', component: OrdersComponent, canActivate: [AdminGuard]}
 ];
 

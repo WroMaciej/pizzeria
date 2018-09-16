@@ -2,6 +2,7 @@
   <h2>Actually available {{category}}s:</h2>
 
   <div *ngIf="(!isAdminLogged)">
+
     <div class="product" *ngFor="let product of products; index as productIndex">
       <img class="product icon" [src]="product.icon">
       <div class="product text">
@@ -17,7 +18,8 @@
   </div>
 
   <div *ngIf="(isAdminLogged)">
-    <div class="admin product" (click)="goToDetails(product.id)" *ngFor="let product of products; index as productIndex">
+      <div><button (click)="addNewProduct()" class="add-button">ADD NEW {{category | uppercase}}</button></div><br>
+    <div class="admin product" (click)="goToDetails(product.id)" *ngFor="let product of products; index as productIndex">    
       <img class="product icon" [src]="product.icon">
       <div class="product text">
         <div class="product text name">{{product.name}}</div>

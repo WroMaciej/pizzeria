@@ -24,6 +24,7 @@ export class CollectingComponent implements OnInit, OnDestroy {
   products: Array<Product>;
   productsSubscription: Subscription;
   isAdminSubscription: Subscription;
+  newProductSubscription: Subscription;
   isAdminLogged = false;
 
   constructor(
@@ -52,6 +53,9 @@ export class CollectingComponent implements OnInit, OnDestroy {
     if (this.isAdminSubscription) {
       this.isAdminSubscription.unsubscribe();
     }
+    if (this.newProductSubscription) {
+      this.newProductSubscription.unsubscribe();
+    }
   }
 
   goToDetails(productId: number) {
@@ -66,6 +70,23 @@ export class CollectingComponent implements OnInit, OnDestroy {
     console.log('Chosen product name: ' + chosenProduct.name + ' with size: ' + chosenSize);
     this.cartService.addProductVariant(productVariant);
     window.alert('Product added.');
+  }
+
+  addNewProduct() {
+    const newProduct: Product = {
+      id: undefined,
+      category: this.category,
+      name: 'Product name',
+      description: 'Product description',
+      isActive: false,
+      icon: '/assets/img/' + this.category + '-default.png',
+      priceOfSize: [10]
+    };
+    let productAdded: Product;
+    this.newProductSubscription = this.databaseService.addProduct(newProduct).subscribe(added => productAdded = added, () => {}, () => {
+      this.router.navigate(['details/' + productAdded.id]);
+    });
+
   }
 
   private loadProducts() {
