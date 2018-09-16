@@ -1,5 +1,5 @@
 <div class="collecting-pattern">
-  <h3>Product details:</h3>
+  <h4>Product details:</h4>
   <form [formGroup]="detailsForm" (ngSubmit)="saveChangesInDatabase()">
     <label>
       Name: <br>
@@ -11,7 +11,7 @@
       <textarea class="details-input description" type="text" formControlName="description" required></textarea>
     </label><br><br>
 
-    <div class="details-text">Is active:</div>
+    Is active:<br>
     True
     <input type="radio" name="isActive" [value]="true" formControlName="isActive">
     False
@@ -23,7 +23,7 @@
     </label>
 
     <div formArrayName="priceOfSize">
-      <h3>Price of size</h3>
+      Price of size:<br>
       <button type="button" (click)="addSize()">Add size</button>
       <button type="button" (click)="removeSize()">Remove size</button>
 

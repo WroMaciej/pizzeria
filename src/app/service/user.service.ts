@@ -4,6 +4,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { ProductQuantity } from '../model/product.quantity.model';
 import { User } from '../model/user.model';
 import { Subscription, Observable, Subject, BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class UserService {
@@ -13,7 +14,7 @@ export class UserService {
     isAdminSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     loginSubscription: Subscription;
 
-    constructor(private databaseService: DatabaseService, private cartService: CartService) {
+    constructor(private databaseService: DatabaseService, private cartService: CartService, private router: Router) {
     }
 
     ngOnDestroy() {
@@ -29,6 +30,7 @@ export class UserService {
                     this.currentUser = this.currentUser[0];
                     this.authenticateUser(this.currentUser);
                     this.cartService.clearCart();
+                    this.router.navigate(['/']);
                 });
     }
 
@@ -37,6 +39,7 @@ export class UserService {
         this.loginSubject.next(undefined);
         this.isAdminSubject.next(false);
         this.currentUser = undefined;
+        this.router.navigate(['/']);
     }
 
     private authenticateUser(user: User) {
