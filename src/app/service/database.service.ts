@@ -47,7 +47,11 @@ export class DatabaseService {
     return this.http.post<Order>('/api/orders', orderToAdd);
   }
 
-  getOrders(){
+  deleteOrder(id: number): Observable<void> {
+    return this.http.delete<void>(`/api/orders/${id}`);
+  }
+
+  getOrders() {
     return this.http.get<Order[]>('/api/orders');
   }
 

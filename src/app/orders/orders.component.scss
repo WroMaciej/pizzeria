@@ -68,18 +68,18 @@
     border-style: none;
 }
 
-.product.button {
+.order.button {
     display: inline-block;
     align-content: center;
     vertical-align: top;
     margin-top: 1px;
     margin-left: 10px;
-    width: 65px;
+    width: 75px;
     height: 75px;
     border-style: none;
 }
 
-.product.button.description {
+.order.button.description {
     display: block;
     margin-left: 0px;
     margin-top: 0px;
@@ -87,18 +87,19 @@
     font-size: 12px;
 }
 
-.product.button.clickable {
+.order.button.clickable {
     display: block;
-    margin-left: 0px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top:10px;
-    height: 35px;
+    height: 50px;
     font-size: 15px;
     background-color: red;
     border-style: solid;
     border-radius: 5px;
 }
 
-.product.button.clickable:hover{
+.order.button.clickable:hover{
     cursor: pointer;
     background-color: greenyellow;
 }

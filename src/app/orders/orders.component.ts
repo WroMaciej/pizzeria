@@ -13,6 +13,7 @@ export class OrdersComponent implements OnInit {
 
   orders: Array<Order>;
   ordersSubscription: Subscription;
+  deleteSubscription: Subscription;
 
   constructor(readonly databaseService: DatabaseService, private sizeService: SizeService) { }
 
@@ -20,12 +21,20 @@ export class OrdersComponent implements OnInit {
     this.loadOrders();
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.ordersSubscription.unsubscribe();
+    if (this.deleteSubscription) {
+      this.deleteSubscription.unsubscribe();
+    }
   }
 
   loadOrders() {
-    this.ordersSubscription = this.databaseService.getOrders().subscribe(orders => this.orders = orders)
+    this.ordersSubscription = this.databaseService.getOrders().subscribe(orders => this.orders = orders);
+  }
+
+  deleteOrder(orderId: number) {
+    this.deleteSubscription =
+     this.databaseService.deleteOrder(orderId).subscribe(() => { }, () => { }, () => { window.alert('Order deleted'); this.loadOrders(); });
   }
 
 
