@@ -1,3 +1,4 @@
+import { UserGuard } from './guards/user.guard';
 import { CartService } from './service/cart.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -22,19 +23,20 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { DetailsComponent } from './details/details.component';
 import { OrdersComponent } from './orders/orders.component'; 
 import { SizeService } from './service/size.service';
+import { AdminGuard } from './guards/admin.guard';
 
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'cart', component: CartComponent },
+  { path: 'cart', component: CartComponent, canActivate: [UserGuard] },
   { path: 'pizza', component: CollectingComponent },
   { path: 'pasta', component: CollectingComponent },
   { path: 'drink', component: CollectingComponent },
   { path: 'confirmation/:totalPrice', component: ConfirmationComponent },
-  { path: 'details/:productId', component: DetailsComponent},
-  { path: 'orders', component: OrdersComponent}
+  { path: 'details/:productId', component: DetailsComponent, canActivate: [AdminGuard]},
+  { path: 'orders', component: OrdersComponent, canActivate: [AdminGuard]}
 ];
 
 @NgModule({
