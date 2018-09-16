@@ -35,7 +35,7 @@ const appRoutes: Routes = [
   { path: 'pasta', component: CollectingComponent },
   { path: 'drink', component: CollectingComponent },
   { path: 'confirmation/:totalPrice', component: ConfirmationComponent },
-  { path: 'details/:productId', component: DetailsComponent},
+  { path: 'details/:productId', component: DetailsComponent, canActivate: [AdminGuard]},
   { path: 'orders', component: OrdersComponent, canActivate: [AdminGuard]}
 ];
 
@@ -63,7 +63,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [UserService, CartService, SizeService],
+  providers: [UserService, CartService, SizeService, AdminGuard, UserGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -280,6 +280,17 @@
         14
       ],
       "icon": "/assets/img/pizza-default.png"
+    },
+    {
+      "category": "pizza",
+      "name": "Product name",
+      "description": "Product description",
+      "isActive": false,
+      "icon": "/assets/img/pizza-default.png",
+      "priceOfSize": [
+        10
+      ],
+      "id": 23
     }
   ],
   "users": [
