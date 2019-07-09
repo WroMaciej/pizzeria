@@ -103,7 +103,7 @@ export class CollectingComponent implements OnInit, OnDestroy {
   private loadProducts() {
     console.log('Loading products...');
 
-    if (this.isAdminLogged && this.isAdminLogged == true) {
+    if (this.isAdminLogged && this.isAdminLogged === true) {
       this.productsSubscription = this.databaseService.getAllProductsByCategory(this.category)
         .subscribe(res => this.products = res);
       console.log('Products loaded for admin.');

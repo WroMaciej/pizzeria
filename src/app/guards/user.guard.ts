@@ -8,7 +8,7 @@ export class UserGuard implements CanActivate {
   constructor(private readonly userService: UserService) { }
 
   canActivate(): boolean {
-    return (!this.userService.currentUser || !this.userService.currentUser.isAdmin);
+    return (!this.userService.currentUser.isAdmin);
   }
 
 }

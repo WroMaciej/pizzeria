@@ -30,7 +30,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'cart', component: CartComponent, canActivate: [UserGuard] },
+  { path: 'cart', component: CartComponent},
   { path: 'pizza', component: CollectingComponent },
   { path: 'pasta', component: CollectingComponent },
   { path: 'drink', component: CollectingComponent },

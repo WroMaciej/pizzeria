@@ -13,7 +13,7 @@ import { Validators, FormBuilder, FormControl } from '@angular/forms';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnDestroy {
 
   productQuantities: Array<ProductQuantity>;
   cartTotalPrice: number;
@@ -44,6 +44,10 @@ export class CartComponent implements OnInit {
       this.orderSubscription.unsubscribe();
     }
   }
+
+  // getName() {
+  //   this.sizeService.getSizeNameForProduct();
+  // }
 
   private loadPositions() {
     this.productQuantities = this.cartService.getAllProductQuantities();
